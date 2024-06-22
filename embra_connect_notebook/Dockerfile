@@ -24,7 +24,7 @@ COPY ./bin/sqljdbc_12.6 /home/jovyan/.bin/sqljdbc_12.6
 # Copy over custom configuration
 COPY ./config/jupyterhub_config.py /etc/jupyter/jupyterhub_config.py
 COPY ./config/jupyter_notebook_config.py /home/jovyan/.jupyter/jupyter_notebook_config.py
-COPY ./defaults/ui/config.ipynb /home/jovyan/.defaults/ui/config.ipynb
+COPY ./defaults/ui/config.ipynb /home/jovyan/defaults/ui/config.ipynb
 
 # Install Jupyter extensions
 RUN pip install jupyter_contrib_nbextensions

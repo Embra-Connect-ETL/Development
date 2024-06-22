@@ -1,4 +1,4 @@
-FROM lexaraprime/embra_connect_notebook:latest
+FROM lexaraprime/embra_connect_notebook:1.0
 
 ARG NB_USER=jovyan
 ARG NB_UID=1000
@@ -24,7 +24,7 @@ RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
 
 # Install pyspark for the user jovyan
-RUN pip install pyspark
+# RUN pip install pyspark
 
 # Expose default JLN port
 EXPOSE 8888
