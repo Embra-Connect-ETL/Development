@@ -37,16 +37,20 @@ body {
 .lm-TabBar-content {
     background: white;
     color: white;
+    border-radius: 0 12px 0 0;
+    box-shadow: 0 1rem 1rem 0 rgba(0, 0, 0, .3);
 }
 
 .jp-InputPrompt {
     letter-spacing: .7px;
     font-weight: 700;
+    color: #4f4f4f;
 }
 
 .jp-InputArea-editor {
     border-radius: 10px;
     letter-spacing: .3px;
+    border: none;
 }
 
 .jp-Toolbar {
@@ -84,15 +88,12 @@ body {
 
 .jp-FileBrowser-toolbar .jp-ToolbarButtonComponent[data-command='launcher:create'] {
     background: #308AFF;
+    width: 40px;
 }
 
 .jp-DirListing-item.jp-mod-selected {
     background: #308AFF;
     box-shadow: 0 .5rem .5rem 0 rgba(0, 0, 0, .1);
-}
-
-.jp-Notebook .jp-Cell.jp-mod-active.jp-mod-dirty .jp-Collapser {
-    background: #FFA07A;
 }
 
 .jp-Notebook .jp-Cell.jp-mod-active.jp-mod-dirty .jp-Collapser {
@@ -115,10 +116,6 @@ body {
 .jp-cell-toolbar:hover {
     box-shadow: 0 2rem 2rem 0 rgba(0, 0, 0, .05);
     opacity: 1;
-}
-
-.jp-FileBrowser-toolbar .jp-ToolbarButtonComponent[data-command='launcher:create'] {
-    width: 40px;
 }
 
 .jp-DirListing-headerItem.jp-id-modified {
@@ -186,10 +183,7 @@ button.jp-mod-styled.jp-mod-reject:hover {
     border-radius: 2px;
 }
 
-.lm-TabBar-content {
-    border-radius: 0 12px 0 0;
-    box-shadow: 0 1rem 1rem 0 rgba(0, 0, 0, .3);
-}
+
 
 #menu-panel-wrapper {
     border-bottom: none;
@@ -242,7 +236,7 @@ button.jp-mod-styled.jp-mod-reject:hover {
     box-shadow: 0 1rem 1rem 0 rgba(0, 0, 0, .02);
 }
 
-body[data-notebook='notebooks'] .jp-Notebook > *:first-child:not(:last-child) {
+body[data-notebook='notebooks'] .jp-Notebook>*:first-child:not(:last-child) {
     box-shadow: 0 1rem 1rem 0 rgba(0, 0, 0, .02);
     border-radius: 8px;
 }
@@ -255,19 +249,14 @@ body[data-notebook='notebooks'] .jp-cell-toolbar {
     background: #eeee;
 }
 
-.jp-InputPrompt {
-    color: #4f4f4f;
-}
-
-.jp-CodeConsole .ͼo, .jp-Notebook .ͼo {
+.jp-CodeConsole .ͼo,
+.jp-Notebook .ͼo {
     background: white;
 }
 
-.jp-InputArea-editor {
-    border: none;
-}
-
-.jp-RenderedText pre, .jp-RenderedJavaScript pre, .jp-RenderedHTMLCommon pre {
+.jp-RenderedText pre,
+.jp-RenderedJavaScript pre,
+.jp-RenderedHTMLCommon pre {
     color: #4f4f4fbb;
 }
 
