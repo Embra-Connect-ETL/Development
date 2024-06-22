@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embra Connect | Dashboard</title>
+
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <link rel="shortcut icon" href="../assets/favicons/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <main id="app">
+        <!-- Main container -->
+        <div class="container">
+
+            <div class="content">
+                <!-- Side bar menu -->
+                <menu class="side-bar-menu">
+                    <div class="logo-container">
+                        <img src="../assets/png/color_logo_no_bg.png" alt="" class="logo">
+                    </div>
+
+                    <!-- Navigation links -->
+                    <ul class="side-nav-links">
+                        <!-- Link item -->
+                        <li class="link-item active">
+                            <!-- Link -->
+                            <a href="./dashboard.html" class="link active">
+                                <ion-icon name="grid" class="side-menu-icon active-icon"></ion-icon>
+                                Dashboard
+                            </a>
+                        </li>
+                        <!-- Link item -->
+                        <li class="link-item">
+                            <!-- Link -->
+                            <a href="./notebook.html" class="link">
+                                <ion-icon name="book" class="side-menu-icon"></ion-icon>
+                                Notebook
+                            </a>
+                        </li>
+                        <!-- Link item -->
+                        <li class="link-item">
+                            <!-- Link -->
+                            <a href="#" class="link">
+                                <ion-icon name="document-text" class="side-menu-icon"></ion-icon>
+                                Reports
+                            </a>
+                        </li>
+                        <!-- Link item -->
+                        <li class="link-item">
+                            <!-- Link -->
+                            <a href="#" class="link">
+                                <ion-icon name="bar-chart" class="side-menu-icon"></ion-icon>
+                                Analytics
+                            </a>
+                        </li>
+                        <!-- Link item -->
+                        <li class="link-item">
+                            <!-- Link -->
+                            <a href="./config.html" class="link">
+                                <ion-icon name="magnet" class="side-menu-icon"></ion-icon>
+                                Connection
+                            </a>
+                        </li>
+
+                        <!-- Stats section -->
+                        <section class="stats">
+                            <li class="link-item">
+                                <a href="#" class="link">
+                                    <ion-icon name="caret-down-circle" class="side-menu-icon stats-icon"></ion-icon>
+                                    Stats
+                                </a>
+                            </li>
+                        </section>
+
+                        <!-- Link item -->
+                        <li class="user-profile">
+                            <div class="profile-wrapper">
+                                <ion-icon name="person" class="side-menu-icon profile-icon"></ion-icon>
+                                <!-- Link -->
+                                <a href="#" class="profile-link">
+                                    EC User
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </menu>
+
+                <!-- Dashboard content -->
+                <div class="dashboard-content">
+                    <h2 class="dashboard-title">
+                        <span>Dashboard</span>
+                    </h2>
+
+                    <!-- dDashboard content -->
+                    <div class="dashboard-content-wrapper">
+                        <div class="kpi-cards-top">
+                            <!-- KPI card -->
+                            <div class="main-stat-card">
+                                <h3 class="card-title">
+                                    <p class="card-value">
+                                        <ion-icon name="stats-chart" class="model-stats-icon"></ion-icon>
+                                        1389
+                                    </p>
+                                    Models Processed
+                                    <span class="sub-title">
+                                        THIS MONTH
+                                    </span>
+                                </h3>
+                                
+                                <!-- Server icon -->
+                                <ion-icon name="server" class="server-icon"></ion-icon>
+                            </div>
+
+                            <!-- Dashboard stat cards -->
+                            <div class="dashboard-stat-card">
+                                <h2 class="dashboard-stat-card-title">
+                                    <ion-icon name="open" class="link-icon"></ion-icon>
+                                    Analytics Overview
+                                </h2>
+
+                                <p class="dashboard-stat-card-info">
+                                    See how your data performs/grows and how you can improve it
+                                </p>
+
+                                <!-- Suggested steps -> This will be auto-generated -->
+                                <ul class="suggested-steps">
+                                    <li class="suggested-step active">
+                                        <ion-icon name="information-circle" class="suggestion-icon"></ion-icon>
+                                        Define Objectives
+                                    </li>
+
+                                    <li class="suggested-step">
+                                        <ion-icon name="information-circle" class="suggestion-icon"></ion-icon>
+                                        Collect Relevant Data
+                                    </li>
+
+                                    <li class="suggested-step">
+                                        <ion-icon name="information-circle" class="suggestion-icon"></ion-icon>
+                                        Cleanse and Prepare Data
+                                    </li>
+
+                                    <li class="suggested-step">
+                                        <ion-icon name="information-circle" class="suggestion-icon"></ion-icon>
+                                        Choose Metrics
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Dashboard stat cards -->
+                            <div class="dashboard-stat-card">
+                                <div class="dashboard-card-content">
+                                    <h2 class="dashboard-stat-card-title">
+                                        <ion-icon name="trending-up" class="trend-icon"></ion-icon>
+                                        Trend Analysis
+                                    </h2>
+
+                                    <p class="dashboard-stat-card-info">
+                                        Pin point issues with minimal, easy to interpret visualizations
+                                    </p>
+
+                                    <!-- Expand visualization -->
+                                    <a href="#" class="expand-button">
+                                        Click to Expand
+                                        <ion-icon name="radio-button-on" class="expand-icon"></ion-icon>
+                                    </a>
+
+                                    <!-- Canvas -->
+                                    <div class="bar-chart">
+                                        <canvas id="stats-chart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- KPI cards END -->
+                        <div class="activity-section">
+                            <div class="title-content">
+                                <h2 class="activity-section-title">
+                                    <ion-icon name="calendar-number" class="activity-icon"></ion-icon>
+                                    Activity
+                                </h2>
+
+                                <a href="#" class="show-all">
+                                    Show all
+                                </a>
+                            </div>
+
+                            <!-- Content wrapper -->
+                            <div class="activity-content-wrapper">
+                                <ul class="recent-activities">
+                                    <!-- Individual task -->
+                                    <li class="activity">
+                                        <!-- Main activity-info -->
+                                        <div class="main-activity-info">
+                                            <!-- Activity name -->
+                                            <h2 class="activity-name">
+                                                <ion-icon name="checkmark-circle" class="check-icon"></ion-icon>
+                                                Daily Run
+                                            </h2>
+
+                                            <!-- Environment -->
+                                            <p class="activity-environment">
+                                                Deployment
+                                            </p>
+                                        </div>
+
+                                        <!-- Time triggered -->
+                                        <div class="time-triggered">
+                                            <p class="duration-details">
+                                                <ion-icon name="stopwatch" class="watch-icon"></ion-icon>
+
+                                                <!-- Update to retrieve time programmatically -->
+                                                Jan 25, 2024, 3:00 PM GMT+3
+                                            </p>
+
+                                            <!-- Time taken -->
+                                            <h3 class="time-taken">
+                                                Duration 1m, 15s
+                                            </h3>
+                                        </div>
+                                    </li>
+                                    <!-- Task end -->
+
+                                    <!-- Individual task -->
+                                    <li class="activity">
+                                        <!-- Main activity-info -->
+                                        <div class="main-activity-info">
+                                            <!-- Activity name -->
+                                            <h2 class="activity-name">
+                                                <ion-icon name="checkmark-circle" class="check-icon"></ion-icon>
+                                                Daily Run
+                                            </h2>
+
+                                            <!-- Environment -->
+                                            <p class="activity-environment">
+                                                Deployment
+                                            </p>
+                                        </div>
+
+                                        <!-- Time triggered -->
+                                        <div class="time-triggered">
+                                            <p class="duration-details">
+                                                <ion-icon name="stopwatch" class="watch-icon"></ion-icon>
+
+                                                <!-- Update to retrieve time programmatically -->
+                                                Jan 25, 2024, 3:00 PM GMT+3
+                                            </p>
+
+                                            <!-- Time taken -->
+                                            <h3 class="time-taken">
+                                                Duration 1m, 15s
+                                            </h3>
+                                        </div>
+                                    </li>
+                                    <!-- Task end -->
+
+                                    <!-- Individual task -->
+                                    <li class="activity">
+                                        <!-- Main activity-info -->
+                                        <div class="main-activity-info">
+                                            <!-- Activity name -->
+                                            <h2 class="activity-name">
+                                                <ion-icon name="checkmark-circle" class="check-icon"></ion-icon>
+                                                Daily Run
+                                                <ion-icon name="open" class="open-icon"></ion-icon>
+                                            </h2>
+
+                                            <!-- Environment -->
+                                            <p class="activity-environment">
+                                                Deployment
+                                            </p>
+                                        </div>
+
+                                        <!-- Time triggered -->
+                                        <div class="time-triggered">
+                                            <p class="duration-details">
+                                                <ion-icon name="stopwatch" class="watch-icon"></ion-icon>
+
+                                                <!-- Update to retrieve time programmatically -->
+                                                Jan 25, 2024, 3:00 PM GMT+3
+                                            </p>
+
+                                            <!-- Time taken -->
+                                            <h3 class="time-taken">
+                                                Duration 1m, 15s
+                                            </h3>
+                                        </div>
+                                    </li>
+                                    <!-- Task end -->
+
+                                     <!-- Individual task -->
+                                     <li class="activity">
+                                        <!-- Main activity-info -->
+                                        <div class="main-activity-info">
+                                            <!-- Activity name -->
+                                            <h2 class="activity-name">
+                                                <ion-icon name="checkmark-circle" class="check-icon"></ion-icon>
+                                                Daily Run
+                                            </h2>
+
+                                            <!-- Environment -->
+                                            <p class="activity-environment">
+                                                Deployment
+                                            </p>
+                                        </div>
+
+                                        <!-- Time triggered -->
+                                        <div class="time-triggered">
+                                            <p class="duration-details">
+                                                <ion-icon name="stopwatch" class="watch-icon"></ion-icon>
+
+                                                <!-- Update to retrieve time programmatically -->
+                                                Jan 25, 2024, 3:00 PM GMT+3
+                                            </p>
+
+                                            <!-- Time taken -->
+                                            <h3 class="time-taken">
+                                                Duration 1m, 15s
+                                            </h3>
+                                        </div>
+                                    </li>
+                                    <!-- Task end -->
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Dashboard content END -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- Additional modules -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../static/js/charts/bar-chart.js"></script>
+    <script src="../static/js/charts/line-chart.js"></script>
+    <script src="../static/js/scripts/dashboard/script.js"></script>
+</body>
+
+</html>

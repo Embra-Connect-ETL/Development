@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  # Web-Client server
+  server:
+    build: 
+      context: ./server
+    ports:
+      - "5500:5500"
+
+  # Notebook service
+  notebook:
+    build: 
+      context: ./notebook
+    ports:
+      - "8888:8888"
+
+  # DBT service
+  dbt_service:
+    build: 
+      context: ./services/dbt
+    ports:
+      - "3000:3000"

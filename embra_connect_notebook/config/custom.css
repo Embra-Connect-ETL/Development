@@ -1,0 +1,280 @@
+body {
+    background: white;
+    font-family: system-ui;
+}
+
+#jp-title-panel-title input {
+    font-family: system-ui;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 1.1px;
+    color: #6A6A6Aff;
+}
+
+.lm-MenuBar-content {
+    font-family: system-ui;
+    letter-spacing: .4px;
+    color: #6A6A6Aff;
+}
+
+#jp-left-stack>.lm-Widget,
+#jp-right-stack>.lm-Widget {
+    background: #EBEBEBff;
+}
+
+.jp-DirListing-content {
+    background: #EBEBEBff;
+    font-family: system-ui;
+    font-size: .7rem;
+    font-weight: 600;
+    box-shadow: inset 0 2rem 2rem 0 rgba(0, 0, 0, .05);
+}
+
+.jp-SideBar.lm-TabBar {
+    background: #EBEBEBff;
+}
+
+.lm-TabBar-content {
+    background: white;
+    color: white;
+}
+
+.jp-InputPrompt {
+    letter-spacing: .7px;
+    font-weight: 700;
+}
+
+.jp-InputArea-editor {
+    border-radius: 10px;
+    letter-spacing: .3px;
+}
+
+.jp-Toolbar {
+    background: white;
+}
+
+.jp-FileBrowser-toolbar {
+    background: #EBEBEBff;
+}
+
+.jp-InputGroup,
+.jp-FilterBox {
+    background: white;
+    border-radius: 4px;
+    font-family: system-ui;
+    letter-spacing: .5px;
+}
+
+.jp-InputGroup input {
+    border: none;
+    box-shadow: none;
+    font-family: system-ui;
+    width: 230px;
+}
+
+.jp-InputGroup input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.jp-FileBrowser-filterBox input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.jp-FileBrowser-toolbar .jp-ToolbarButtonComponent[data-command='launcher:create'] {
+    background: #308AFF;
+}
+
+.jp-DirListing-item.jp-mod-selected {
+    background: #308AFF;
+    box-shadow: 0 .5rem .5rem 0 rgba(0, 0, 0, .1);
+}
+
+.jp-Notebook .jp-Cell.jp-mod-active.jp-mod-dirty .jp-Collapser {
+    background: #FFA07A;
+}
+
+.jp-Notebook .jp-Cell.jp-mod-active.jp-mod-dirty .jp-Collapser {
+    background: #FFA07A;
+}
+
+#jp-main-dock-panel[data-mode='single-document'] .jp-MainAreaWidget>.jp-Toolbar {
+    box-shadow: 0 2rem 2rem 0 rgba(0, 0, 0, .1);
+}
+
+.jp-cell-toolbar {
+    background: white;
+    padding: .5rem;
+    border-radius: 5px;
+    margin-top: 6px;
+    opacity: .6;
+    transition: .2s all ease;
+}
+
+.jp-cell-toolbar:hover {
+    box-shadow: 0 2rem 2rem 0 rgba(0, 0, 0, .05);
+    opacity: 1;
+}
+
+.jp-FileBrowser-toolbar .jp-ToolbarButtonComponent[data-command='launcher:create'] {
+    width: 40px;
+}
+
+.jp-DirListing-headerItem.jp-id-modified {
+    letter-spacing: .7px;
+    font-weight: 700;
+}
+
+.ͼ1 .cm-content[contenteditable=true] {
+    box-shadow: inset 0 2rem 2rem 0 rgba(0, 0, 0, .02);
+    padding: .5rem;
+}
+
+.ͼ12 {
+    font-weight: 400;
+    color: #d8655b;
+}
+
+.ͼs {
+    color: #da3733;
+}
+
+.Toastify__toast,
+.jp-Dialog-content {
+    box-shadow: 0 2rem 2rem 0 rgba(0, 0, 0, .2);
+    border-radius: 9px;
+    background: rgb(253, 253, 253);
+    font-weight: 400;
+    letter-spacing: .2px;
+}
+
+.jp-toast-button.jp-mod-link {
+    color: #308AFF;
+}
+
+.lm-SplitPanel[data-orientation='horizontal']>.lm-SplitPanel-handle:after {
+    color: white;
+}
+
+.jp-DocumentSearch-overlay {
+    box-shadow: 0 2rem 2rem 0 rgba(0, 0, 0, .05);
+    border-radius: 6px;
+    border: none;
+    background: rgb(253, 253, 253);
+    font-weight: 400;
+    letter-spacing: .2px;
+    margin-top: 1rem;
+    margin-right: 4rem;
+}
+
+button.jp-mod-styled.jp-mod-accept {
+    background: #308AFF;
+}
+
+button.jp-mod-styled.jp-mod-reject:hover {
+    background: #9E9E9Eff;
+}
+
+.jp-FileBrowser-toolbar .jp-Toolbar-item.jp-DropdownMenu,
+.jp-FileBrowser-toolbar .jp-Toolbar-item.jp-ToolbarButton,
+.jp-FileBrowser-toolbar .jp-Toolbar-item.jp-CommandToolbarButton {
+    border-radius: 2px;
+}
+
+.lm-MenuBar-item {
+    border-radius: 2px;
+}
+
+.lm-TabBar-content {
+    border-radius: 0 12px 0 0;
+    box-shadow: 0 1rem 1rem 0 rgba(0, 0, 0, .3);
+}
+
+#menu-panel-wrapper {
+    border-bottom: none;
+    box-shadow: 0 1rem 1rem 0 rgba(0, 0, 0, .08);
+}
+
+.jp-TreePanel>.lm-TabPanel-stackedPanel {
+    box-shadow: none;
+}
+
+.jp-TreePanel .lm-TabPanel-tabBar {
+    border-bottom: unset;
+    border-right: 1px solid var(--jp-layout-color3);
+    border-top: 1px solid var(--jp-layout-color3);
+    border-radius: 10px 10px 0px 0px;
+    -webkit-border-radius: 10px 10px 0px 0px;
+    -moz-border-radius: 10px 10px 0px 0px;
+}
+
+.lm-Menu {
+    padding: 9px 2px;
+    background: white;
+    color: var(--jp-ui-font-color0);
+    border: none;
+    font-size: var(--jp-ui-font-size1);
+    box-shadow: .1rem .5rem .5rem 0 rgba(0, 0, 0, .04);
+    border-radius: 6px;
+}
+
+.jp-FileBrowser-toolbar .jp-FileActions .jp-ToolbarButtonComponent {
+    border: 1px solid #f5f5f5;
+    border-radius: 4px;
+}
+
+.lm-MenuBar.lm-mod-active .lm-MenuBar-item.lm-mod-active {
+    box-shadow: .3rem .3rem .5rem 0 rgba(0, 0, 0, .4);
+}
+
+.xterm .xterm-viewport {
+    border-radius: 12px;
+    box-shadow: 0 1rem 1rem 0 rgba(0, 0, 0, .2);
+}
+
+[data-term-theme='inherit'] .xterm .xterm-screen canvas {
+    border: none;
+}
+
+.jp-Dialog-content {
+    border-radius: 9px;
+    box-shadow: 0 1rem 1rem 0 rgba(0, 0, 0, .02);
+}
+
+body[data-notebook='notebooks'] .jp-Notebook > *:first-child:not(:last-child) {
+    box-shadow: 0 1rem 1rem 0 rgba(0, 0, 0, .02);
+    border-radius: 8px;
+}
+
+body[data-notebook='notebooks'] .jp-cell-toolbar {
+    background: white;
+}
+
+.jp-Notebook .jp-Cell.jp-mod-active .jp-Collapser {
+    background: #eeee;
+}
+
+.jp-InputPrompt {
+    color: #4f4f4f;
+}
+
+.jp-CodeConsole .ͼo, .jp-Notebook .ͼo {
+    background: white;
+}
+
+.jp-InputArea-editor {
+    border: none;
+}
+
+.jp-RenderedText pre, .jp-RenderedJavaScript pre, .jp-RenderedHTMLCommon pre {
+    color: #4f4f4fbb;
+}
+
+.jp-CodeCell.jp-mod-outputsScrolled .jp-Cell-outputArea {
+    border-radius: 9px;
+}
+
+.jp-CodeCell.jp-mod-outputsScrolled .jp-Cell-outputArea::after {
+    box-shadow: none;
+}

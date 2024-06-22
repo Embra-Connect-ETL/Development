@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embra Connect | Notebook</title>
+
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <link rel="shortcut icon" href="../assets/favicons/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <main id="app">
+        <!-- Main container -->
+        <div class="container">
+
+            <div class="content">
+                <!-- Side bar menu -->
+                <menu class="side-bar-menu">
+                    <div class="logo-container">
+                        <img src="../assets/png/color_logo_no_bg.png" alt="" class="logo">
+                    </div>
+
+                    <!-- Navigation links -->
+                    <ul class="side-nav-links">
+                        <!-- Link item -->
+                        <li class="link-item">
+                            <!-- Link -->
+                            <a href="./dashboard.html" class="link">
+                                <ion-icon name="grid" class="side-menu-icon"></ion-icon>
+                                Dashboard
+                            </a>
+                        </li>
+                        <!-- Link item -->
+                        <li class="link-item active">
+                            <!-- Link -->
+                            <a href="./notebook.html" class="link active">
+                                <ion-icon name="book" class="side-menu-icon active-icon"></ion-icon>
+                                Notebook
+                            </a>
+                        </li>
+                        <!-- Link item -->
+                        <li class="link-item">
+                            <!-- Link -->
+                            <a href="#" class="link">
+                                <ion-icon name="document-text" class="side-menu-icon"></ion-icon>
+                                Reports
+                            </a>
+                        </li>
+                        <!-- Link item -->
+                        <li class="link-item">
+                            <!-- Link -->
+                            <a href="#" class="link">
+                                <ion-icon name="bar-chart" class="side-menu-icon"></ion-icon>
+                                Analytics
+                            </a>
+                        </li>
+                        <!-- Link item -->
+                        <li class="link-item">
+                            <!-- Link -->
+                            <a href="./config.html" class="link">
+                                <ion-icon name="magnet" class="side-menu-icon"></ion-icon>
+                                Connection
+                            </a>
+                        </li>
+
+                        <!-- Stats section -->
+                        <section class="stats">
+                            <li class="link-item">
+                                <a href="#" class="link">
+                                    <ion-icon name="caret-down-circle" class="side-menu-icon stats-icon"></ion-icon>
+                                    Stats
+                                </a>
+                            </li>
+
+                            <!-- Canvas -->
+                            <canvas id="stats-chart"></canvas>
+                        </section>
+
+                        <!-- Link item -->
+                        <li class="user-profile">
+                            <div class="profile-wrapper">
+                                <ion-icon name="person" class="side-menu-icon profile-icon"></ion-icon>
+                                <!-- Link -->
+                                <a href="#" class="profile-link">
+                                    Aaron Ertler
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </menu>
+
+                <!-- Page content -->
+                <div class="page-content">
+                    <!-- Interactive notebook -->
+                    <iframe title="notebook" class="notebook" src="http://localhost:8888/doc/tree/config.ipynb" width="100%"></iframe>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- Additional modules -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../static/js/charts/doughnut-chart.js"></script>
+</body>
+
+</html>
