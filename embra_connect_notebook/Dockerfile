@@ -6,6 +6,13 @@ ENV JUPYTER_TOKEN=user
 # Set the working directory
 WORKDIR /home/jovyan
 
+USER root
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip
+RUN ./aws/install && rm -r awscliv2.zip
+USER jovyan
+
+RUN pip install --upgrade  --no-cache-dir pyspark polars
+
 # Generate Jupyter config
 RUN jupyter notebook --generate-config
 
@@ -17,6 +24,7 @@ COPY ./bin/sqljdbc_12.6 /home/jovyan/.bin/sqljdbc_12.6
 # Copy over custom configuration
 COPY ./config/jupyterhub_config.py /etc/jupyter/jupyterhub_config.py
 COPY ./config/jupyter_notebook_config.py /home/jovyan/.jupyter/jupyter_notebook_config.py
+COPY ./defaults/ui/config.ipynb /home/jovyan/.defaults/ui/config.ipynb
 
 # Install Jupyter extensions
 RUN pip install jupyter_contrib_nbextensions
