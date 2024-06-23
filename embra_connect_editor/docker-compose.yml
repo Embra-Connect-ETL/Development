@@ -1,21 +1,7 @@
 version: "3.3"
 
 services:
-  # Web-Client server
-  server:
-    build:
-      context: ./server
-    ports:
-      - 5500:5500
-
-  # DBT service
-  dbt_service:
-    build:
-      context: ./services/dbt
-    ports:
-      - 3000:3000
-
-  editor:
+  code-server:
     image: lscr.io/linuxserver/code-server:latest
     container_name: embra_connect_editor
     environment:
@@ -29,7 +15,7 @@ services:
       - PROXY_DOMAIN=code-server.my.domain #optional
       - DEFAULT_WORKSPACE=/config/workspace #optional
     volumes:
-      - /config
+      - /path/to/appdata/config:/config
     ports:
       - 8443:8443
     restart: unless-stopped
