@@ -83,7 +83,7 @@ class Dashboard {
          * @returns {void}
          * */
 
-        try {
+        try {  
             let dbConnection = await DbOperations.openDBConnection();
             let transaction = dbConnection.transaction('config', 'readonly');
             let objectStore = transaction.objectStore('config');
@@ -130,3 +130,26 @@ class Dashboard {
 }
 
 Dashboard.h_RETRIEVE_INFO();
+
+
+window.addEventListener('load', function() {
+    Toastify({
+      text: "Generating Summary",
+      duration: 3000,
+      newWindow: true,
+      close: false,
+      gravity: "top",
+      position: "right",
+      stopOnFocus: true,
+      style: {
+        background: "#f38041",
+        color: "#ffffff",
+        borderRadius: "64px 21px 64px 32px",
+        fontWeight: "300",
+        letterSpacing: "1.4px",
+        textTransform: "capitalize",
+      },
+      // Handle callback after click.
+      onClick: function () {},
+    }).showToast();
+  });
