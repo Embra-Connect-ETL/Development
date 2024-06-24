@@ -1,115 +1,223 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:image:width" content="400" />
+    <meta property="og:image:height" content="300" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Embra Connect | ETL" />
+    <meta property="og:description"
+        content="Embra Connect is an open-source tool designed to streamline your ETL processes, making data integration simpler and more efficient. Unlike Databricks, Embra Connect can be run both locally and in the cloud, providing unmatched flexibility for data professionals." />
+    <meta property="og:url" content="http://localhost:5500" />
+    <meta property="og:image" content="http://localhost:5500/assets/padded_logo.png" />
+    <title>Embra Connect | Code Editor</title>
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="shortcut icon" href="../assets/favicons/favicon.ico" type="image/x-icon" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embra Connect | Notebook</title>
+    <!--============= TOASTER ============= -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <!-- =================================== -->
+  </head>
 
-    <link rel="stylesheet" href="../static/css/style.css">
-
-    <link rel="shortcut icon" href="../assets/favicons/favicon.ico" type="image/x-icon">
-</head>
-
-<body>
+  <body>
     <main id="app">
-        <!-- Main container -->
-        <div class="container">
-
-            <div class="content">
-                <!-- Side bar menu -->
-                <menu class="side-bar-menu">
-                    <div class="logo-container">
-                        <img src="../assets/png/color_logo_no_bg.png" alt="" class="logo">
-                    </div>
-
-                    <!-- Navigation links -->
-                    <ul class="side-nav-links">
-                        <!-- Link item -->
-                        <li class="link-item">
-                            <!-- Link -->
-                            <a href="./dashboard.html" class="link">
-                                <ion-icon name="grid" class="side-menu-icon"></ion-icon>
-                                Dashboard
-                            </a>
-                        </li>
-                        <!-- Link item -->
-                        <li class="link-item active">
-                            <!-- Link -->
-                            <a href="./editor.html" class="link active">
-                                <ion-icon name="book" class="side-menu-icon active-icon"></ion-icon>
-                                Code Editor
-                            </a>
-                        </li>
-                        <!-- Link item -->
-                        <li class="link-item">
-                            <!-- Link -->
-                            <a href="#" class="link">
-                                <ion-icon name="document-text" class="side-menu-icon"></ion-icon>
-                                Reports
-                            </a>
-                        </li>
-                        <!-- Link item -->
-                        <li class="link-item">
-                            <!-- Link -->
-                            <a href="#" class="link">
-                                <ion-icon name="bar-chart" class="side-menu-icon"></ion-icon>
-                                Analytics
-                            </a>
-                        </li>
-                        <!-- Link item -->
-                        <li class="link-item">
-                            <!-- Link -->
-                            <a href="./config.html" class="link">
-                                <ion-icon name="magnet" class="side-menu-icon"></ion-icon>
-                                Connection
-                            </a>
-                        </li>
-
-                        <!-- Stats section -->
-                        <section class="stats">
-                            <li class="link-item">
-                                <a href="#" class="link">
-                                    <ion-icon name="caret-down-circle" class="side-menu-icon stats-icon"></ion-icon>
-                                    Stats
-                                </a>
-                            </li>
-
-                            <!-- Canvas -->
-                            <canvas id="stats-chart"></canvas>
-                        </section>
-
-                        <!-- Link item -->
-                        <li class="user-profile">
-                            <div class="profile-wrapper">
-                                <ion-icon name="person" class="side-menu-icon profile-icon"></ion-icon>
-                                <!-- Link -->
-                                <a href="#" class="profile-link">
-                                    EC User
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </menu>
-
-                <!-- Page content -->
-                <div class="page-content">
-                    <!-- Interactive Code Editor -->
-                    <iframe title="notebook" class="notebook" src="http://localhost:8081" width="100%"></iframe>
-
-                </div>
+      <!-- Main container -->
+      <div class="container">
+        <div class="content">
+          <!-- Side bar menu -->
+          <menu class="side-bar-menu">
+            <div class="logo-container">
+              <img
+                src="../assets/png/color_logo_no_bg.png"
+                alt=""
+                class="logo"
+              />
             </div>
+
+            <!-- Navigation links -->
+            <ul class="side-nav-links">
+              <!-- Link item -->
+              <li class="link-item">
+                <!-- Link -->
+                <a href="./dashboard.html" class="link">
+                  <ion-icon name="grid" class="side-menu-icon"></ion-icon>
+                  Dashboard
+                </a>
+              </li>
+              <!-- Link item -->
+              <li class="link-item active">
+                <!-- Link -->
+                <a href="./editor.html" class="link active">
+                  <ion-icon
+                    name="book"
+                    class="side-menu-icon active-icon"
+                  ></ion-icon>
+                  Code Editor
+                </a>
+              </li>
+              <!-- Link item -->
+              <li class="link-item">
+                <!-- Link -->
+                <a href="#" class="link">
+                  <ion-icon
+                    name="document-text"
+                    class="side-menu-icon"
+                  ></ion-icon>
+                  Reports
+                </a>
+              </li>
+              <!-- Link item -->
+              <li class="link-item">
+                <!-- Link -->
+                <a href="#" class="link">
+                  <ion-icon name="bar-chart" class="side-menu-icon"></ion-icon>
+                  Analytics
+                </a>
+              </li>
+              <!-- Link item -->
+              <li class="link-item">
+                <!-- Link -->
+                <a href="./config.html" class="link">
+                  <ion-icon name="magnet" class="side-menu-icon"></ion-icon>
+                  Connection
+                </a>
+              </li>
+
+              <!-- Stats section -->
+              <section class="stats">
+                <li class="link-item">
+                  <a href="#" class="link">
+                    <ion-icon
+                      name="caret-down-circle"
+                      class="side-menu-icon stats-icon"
+                    ></ion-icon>
+                    Stats
+                  </a>
+                </li>
+
+                <!-- Canvas -->
+                <canvas id="stats-chart"></canvas>
+              </section>
+
+              <!-- Link item -->
+              <li class="user-profile">
+                <div class="profile-wrapper">
+                  <ion-icon
+                    name="person"
+                    class="side-menu-icon profile-icon"
+                  ></ion-icon>
+                  <!-- Link -->
+                  <a href="#" class="profile-link"> EC User </a>
+                </div>
+              </li>
+            </ul>
+          </menu>
+
+          <!-- Page content -->
+          <div class="page-content">
+            <!-- Interactive Code Editor -->
+            <iframe
+              title="notebook"
+              class="notebook"
+              src="http://localhost:8081"
+              width="100%"
+            ></iframe>
+          </div>
         </div>
+
+        <!-- Prompt Interface -->
+        <div class="prompt-container">
+          <!-- Model Info. -->
+          <h2 class="model-name">
+            <ion-icon name="chatbubbles" class="chat-icon"></ion-icon>
+            Need Assistance? Ask Lexara!
+          </h2>
+
+          <p class="model-description">
+            Lexara is our advanced language model, here to help with any
+            questions or problems you have. Just type your query below and hit
+            "Submit" to get an instant response from Lexara.
+          </p>
+          <input
+            type="text"
+            id="prompt-input"
+            class="prompt-input"
+            placeholder="Enter your prompt here..."
+          />
+          <button id="prompt-button" class="prompt-button">Submit</button>
+          <div
+            id="response-container"
+            class="response-container"
+            style="display: none"
+          >
+            <h3 class="response-title">Response:</h3>
+            <p id="response-content"></p>
+          </div>
+        </div>
+      </div>
     </main>
 
-
     <!-- Ionicons -->
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
 
     <!-- Additional modules -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../static/js/charts/doughnut-chart.js"></script>
-</body>
 
+    <script>
+      document
+        .getElementById("prompt-button")
+        .addEventListener("click", async () => {
+          const promptInput = document.getElementById("prompt-input").value;
+          if (promptInput.trim() === "") {
+            Toastify({
+              text: "Please enter a prompt.",
+              duration: 3000,
+              newWindow: true,
+              close: false,
+              gravity: "bottom",
+              position: "right",
+              stopOnFocus: true,
+              style: {
+                background: "#f38041",
+                color: "#ffffff",
+                borderRadius: "9px 21px 64px 32px",
+                fontWeight: "300",
+                letterSpacing: "1.4px",
+                textTransform: "capitalize",
+                boxShadow: "0 1rem 1rem 0 rgba(0, 0, 0, .1)",
+              },
+              // Handle callback after click.
+              onClick: function () {},
+            }).showToast();
+            return;
+          }
+
+          // Simulate an LLM response (replace this with actual API call to get the response from your LLM)
+          const response = await getLLMResponse(promptInput);
+
+          // Display the response
+          document.getElementById("response-content").innerText = response;
+          document.getElementById("response-container").style.display = "block";
+        });
+
+      // Simulated function to mimic getting a response from an LLM
+      async function getLLMResponse(prompt) {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve(`This is a simulated response for the prompt: "${prompt}"`);
+          }, 1000);
+        });
+      }
+    </script>
+  </body>
 </html>
