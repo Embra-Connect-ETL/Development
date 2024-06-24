@@ -47,5 +47,8 @@ RUN pip3 install --no-cache-dir pyspark polars
 # Expose the port used by code-server
 EXPOSE 8080
 
+# Add healthcheck
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 CMD curl --fail http://localhost:8080 || exit 1
+
 # Define the entrypoint to run code-server
 ENTRYPOINT ["code-server", "--bind-addr", "0.0.0.0:8080", "--auth", "none"]
