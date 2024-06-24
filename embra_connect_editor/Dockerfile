@@ -16,19 +16,15 @@ FROM ubuntu:20.04
 # Set the environment variable for non-interactive installation
 ENV DEBIAN_FRONTEND=noninteractive
 
-COPY ./bin /home/coder/.drivers
-
 # Install necessary dependencies
 RUN apt-get update --no-install-recommends && \
-    apt-get install git --no-install--recommends &&\
     apt-get install build-essential -y --no-install-recommends && \
-    apt-get install -y curl sudo python3 python3-pip python3-venv --no-install-recommends && \
+    apt-get install -y curl sudo python3 python3-pip python3-venv git --no-install-recommends && \
     apt-get clean
 
-# Set the code-server version you want to install
+# Set code-server version
 ARG VERSION=4.4.0
 
-# Download and install code-server
 RUN curl -fOL https://github.com/coder/code-server/releases/download/v${VERSION}/code-server_${VERSION}_amd64.deb && \
     dpkg -i code-server_${VERSION}_amd64.deb && \
     rm code-server_${VERSION}_amd64.deb
@@ -37,21 +33,17 @@ RUN curl -fOL https://github.com/coder/code-server/releases/download/v${VERSION}
 RUN useradd -m coder && \
     echo "coder ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-# Switch to the non-root user
 USER coder
 
-# Install Rust as the non-root user
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/home/coder/.cargo/bin:${PATH}"
 
-# Install Python packages
 RUN pip3 install --no-cache-dir pyspark polars
 
-# Expose the port used by code-server
+COPY ./bin /home/coder/.drivers
+
 EXPOSE 8080
 
-# Add healthcheck
 HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 CMD curl --fail http://localhost:8080 || exit 1
 
-# Define the entrypoint to run code-server
 ENTRYPOINT ["code-server", "--bind-addr", "0.0.0.0:8080", "--auth", "none"]
