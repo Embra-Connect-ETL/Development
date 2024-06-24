@@ -16,8 +16,11 @@ FROM ubuntu:20.04
 # Set the environment variable for non-interactive installation
 ENV DEBIAN_FRONTEND=noninteractive
 
+COPY ./bin /home/coder/.drivers
+
 # Install necessary dependencies
 RUN apt-get update --no-install-recommends && \
+    apt-get install git --no-install--recommends &&\
     apt-get install build-essential -y --no-install-recommends && \
     apt-get install -y curl sudo python3 python3-pip python3-venv --no-install-recommends && \
     apt-get clean
