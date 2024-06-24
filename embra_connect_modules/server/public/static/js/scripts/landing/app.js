@@ -9,10 +9,11 @@ Toastify({
   style: {
     background: "#f38041",
     color: "#ffffff",
-    borderRadius: "64px 21px 64px 32px",
+    borderRadius: "9px 21px 64px 32px",
     fontWeight: "300",
     letterSpacing: "1.4px",
     textTransform: "capitalize",
+    boxShadow: "0 1rem 1rem 0 rgba(0, 0, 0, .1)",
   },
   // Handle callback after click.
   onClick: function () {},
