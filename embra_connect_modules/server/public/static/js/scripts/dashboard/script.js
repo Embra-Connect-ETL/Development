@@ -83,7 +83,7 @@ class Dashboard {
          * @returns {void}
          * */
 
-        try {  
+        try {
             let dbConnection = await DbOperations.openDBConnection();
             let transaction = dbConnection.transaction('config', 'readonly');
             let objectStore = transaction.objectStore('config');
