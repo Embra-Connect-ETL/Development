@@ -166,36 +166,13 @@ h1 {
 
 .features-list {
   list-style: none;
-  padding: 0;
-  margin: auto;
-  width: 580px;
-  -webkit-backdrop-filter: blur(15px);
-  backdrop-filter: blur(15px);
-  background: rgb(255, 255, 255);
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(rgba(255, 255, 255, 1)),
-    color-stop(50%, rgba(255, 255, 255, 0.6096813725490196)),
-    to(rgba(246, 246, 246, 0.427608543417367))
-  );
-  background: -o-linear-gradient(
-    left,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 0.6096813725490196) 50%,
-    rgba(246, 246, 246, 0.427608543417367) 100%
-  );
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 0.6096813725490196) 50%,
-    rgba(246, 246, 246, 0.427608543417367) 100%
-  );
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#f6f6f6",GradientType=1);
-  border-radius: 64px 127px 12px 54px;
   padding: 4rem;
   pointer-events: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width: 1100px;
+  margin: auto;
 }
 
 .features-list li {
@@ -218,48 +195,47 @@ h1 {
   -ms-flex-direction: column;
   flex-direction: column;
   gap: 1rem;
-  padding-bottom: 1rem;
   text-align: right;
+  border-radius: 120px 14px 12px 42px;
+  box-shadow: 0 2rem 2rem 0 rgba(0, 0, 0, 0.05);
+  background: #f5f5f5;
+  padding: 1rem;
+  height: 150px;
 }
 
 .features-list li strong {
-  width: 650px;
   word-wrap: normal;
+  width: 100%;
   font-weight: 900;
   font-size: 1.2rem;
   text-transform: uppercase;
   text-align: left;
   letter-spacing: 1px;
-  padding-top: 0.6rem;
-  padding-bottom: 0.6rem;
-  padding-left: 1.5rem;
-  padding-right: 6rem;
-  color: var(--white);
-  border-radius: 210px 64px 32px 86px;
   background: rgb(255, 99, 51);
-  background: -o-linear-gradient(
-    left,
-    rgba(255, 99, 51, 1) 0%,
-    rgba(255, 109, 58, 0.8) 37%,
-    rgba(255, 119, 65, 0) 92%
-  );
   background: -webkit-gradient(
     linear,
     left top,
     right top,
     from(rgba(255, 99, 51, 1)),
-    color-stop(37%, rgba(255, 109, 58, 0.8)),
-    color-stop(92%, rgba(255, 119, 65, 0))
+    color-stop(90%, rgba(255, 109, 58, 0.5078125)),
+    color-stop(180%, rgba(255, 119, 65, 0))
+  );
+  background: -o-linear-gradient(
+    left,
+    rgba(255, 99, 51, 1) 0%,
+    rgba(255, 109, 58, 0.5078125) 90%,
+    rgba(255, 119, 65, 0) 180%
   );
   background: linear-gradient(
     90deg,
     rgba(255, 99, 51, 1) 0%,
-    rgba(255, 109, 58, 0.8) 37%,
-    rgba(255, 119, 65, 0) 92%
+    rgba(255, 109, 58, 0.5078125) 90%,
+    rgba(255, 119, 65, 0) 180%
   );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff6333", endColorstr="#ff7741", GradientType=1);
-  -webkit-backdrop-filter: blur(15px);
-  backdrop-filter: blur(15px);
+  border-radius: 32px 90px 81px 52px;
+  color: var(--white);
+  padding: 1rem;
 }
 
 .logos-container-title {
@@ -269,8 +245,8 @@ h1 {
 .logos-container-title h2 {
   font-size: 5rem;
   font-weight: 900;
-  margin-top: 4rem;
-  margin-bottom: 4rem;
+  margin-top: 3rem;
+  margin-bottom: 7rem;
   cursor: alias;
 }
 
@@ -294,11 +270,14 @@ h1 {
   align-items: center;
   gap: 1rem;
   margin-top: 2rem;
-  background: #f5f7f6;
+  background: url(../../assets/backgrounds/abstract_geometric_bg.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: cover;
   -webkit-box-shadow: inset 0 0 6rem 0 rgba(0, 0, 0, 0.1);
   box-shadow: inset 0 0 6rem 0 rgba(0, 0, 0, 0.1);
   padding: 3rem;
-  height: 150px;
+  height: 250px;
 }
 
 .logos-container img {
