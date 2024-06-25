@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: editor-deployment
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: editor
+  template:
+    metadata:
+      labels:
+        app: editor
+    spec:
+      containers:
+      - name: editor
+        image: lexaraprime/embra_connect_editor:1.0
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: config-volume
+          mountPath: /config
+      restartPolicy: Always
+      volumes:
+      - name: config-volume
+        hostPath:
+          path: /config

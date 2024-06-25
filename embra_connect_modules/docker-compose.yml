@@ -3,6 +3,7 @@ version: "3.3"
 services:
   # Web-Client server
   server:
+    image: embra_connect_server
     build:
       context: ./server
     ports:
@@ -10,6 +11,7 @@ services:
 
   # DBT service
   dbt_service:
+    image: embra_connect_dbt_service
     build:
       context: ./services/dbt
     ports:
@@ -17,8 +19,11 @@ services:
 
   editor:
     image: lexaraprime/embra_connect_editor:1.0
+    deploy:
+      mode: replicated
+      replicas: 4
     volumes:
       - /config
     ports:
-      - 8080:8080
+      - 8081:8080
     restart: unless-stopped
