@@ -1,42 +1,181 @@
 <!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property="og:image:width" content="400" />
     <meta property="og:image:height" content="300" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Embra Connect | ETL" />
-    <meta property="og:description"
-        content="Embra Connect is an open-source tool designed to streamline your ETL processes, making data integration simpler and more efficient. Unlike Databricks, Embra Connect can be run both locally and in the cloud, providing unmatched flexibility for data professionals." />
+    <meta
+      property="og:description"
+      content="Embra Connect is an open-source tool designed to streamline your ETL processes, making data integration simpler and more efficient. Unlike Databricks, Embra Connect can be run both locally and in the cloud, providing unmatched flexibility for data professionals."
+    />
     <meta property="og:url" content="http://localhost:5500" />
-    <meta property="og:image" content="http://localhost:5500/assets/padded_logo.png" />
+    <meta
+      property="og:image"
+      content="http://localhost:5500/assets/padded_logo.png"
+    />
     <title>Embra Connect | Home</title>
-    <link rel="stylesheet" href="./static/css/style.css" />
-    <link rel="shortcut icon" href="./assets/favicons/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./static/css/landing.css" />
+    <link
+      rel="shortcut icon"
+      href="./assets/favicons/favicon.ico"
+      type="image/x-icon"
+    />
 
     <!--============= TOASTER ============= -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
     <!-- =================================== -->
-</head>
+  </head>
 
-<body>
+  <body>
     <main id="app">
-        <!-- Main container -->
-        <div class="landing-page-container">
-            <div class="landing-page-content">LANDING</div>
+      <!-- Main container -->
+      <div class="landing-page-container">
+        <div class="landing-page-content">
+          <div class="tool-info">
+            <img
+              src="./assets/png/color_logo_no_bg.png"
+              alt="logo"
+              class="tool-info-logo"
+            />
+            <p>
+              <span>Embra Connect</span> is an open-source tool designed to
+              streamline your ETL processes, making data integration simpler and
+              more efficient. Unlike <strong>Databricks</strong>, Embra Connect
+              can be run both <strong>locally</strong> and
+              <strong>in the cloud</strong>, providing unmatched flexibility for
+              data professionals.
+            </p>
+          </div>
+
+          <h2 class="features-list-title">Key <span>Features</span></h2>
+          <ul class="features-list">
+            <li>
+              <strong>ETL Capabilities</strong> Embra Connect focuses on ETL,
+              ensuring that data extraction, transformation, and loading are as
+              seamless as possible.
+            </li>
+            <li>
+              <strong>Local and Cloud Deployment</strong> Run Embra Connect on
+              your local machine for development and testing, or deploy it in
+              the cloud for production. This flexibility sets it apart from
+              Databricks, which can only be run in the cloud.
+            </li>
+            <li>
+              <strong>Pyspark Integration</strong> Leverage the power of Spark’s
+              distributed data processing for large-scale data operations.
+            </li>
+            <li>
+              <strong>Polars for High-Performance Computing</strong> Utilize
+              Polars for high-performance, multithreaded computing on single
+              nodes, offering significant improvements in speed and memory
+              efficiency.
+            </li>
+            <li>
+              <strong>Composable and Strict API</strong> Benefit from a more
+              expressive API with fewer schema-related bugs, making your data
+              workflows more robust.
+            </li>
+            <li>
+              <strong>Object Storage with S3 API</strong> Embra Connect offers
+              its own object storage solution that implements the S3 API,
+              ensuring compatibility with a wide range of data tools and
+              services.
+            </li>
+            <li>
+              <strong>Integration with Popular Data Tools</strong> Easily
+              configure connections to other data tools such as dbt, Docker,
+              AWS, and more.
+            </li>
+            <li>
+              <strong>Rust for Performance</strong> Written in Rust, Embra
+              Connect is built for performance and safety, providing a solid
+              foundation for your data operations.
+            </li>
+            <li>
+              <strong>Docker for Easy Deployment</strong> Use Docker to deploy
+              Embra Connect quickly and efficiently, whether on your local
+              machine or in the cloud.
+            </li>
+            <li>
+              <strong>Secrets Management with HashiCorp Vault</strong> Securely
+              manage your secrets using HashiCorp's Vault, ensuring your data is
+              protected at all times.
+            </li>
+          </ul>
+
+          <!-- Technologies used -->
+          <div class="logos-container-title">
+            <h2 title="Intergration with Render Cloud comming soon!">
+              Built with <span>existing</span> technologies
+            </h2>
+          </div>
+
+          <div class="logos-container">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/3/38/Jupyter_logo.svg"
+              alt="Jupyter Logo"
+            />
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Docker_%28container_engine%29_logo.svg"
+              alt="Docker Logo"
+            />
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg"
+              alt="AWS Logo"
+            />
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg"
+              alt="GCP Logo"
+            />
+            <!-- <img
+              src="https://intellyx.com/wp-content/uploads/2019/08/Render-cloud-intellyx-BC-logo-1024x536.png"
+              alt="Render Cloud Logo"
+            /> -->
+            <img
+              src="https://www.getdbt.com/_next/image?url=%2Fimg%2Flogos%2Fdbt-logo.svg&w=96&q=75"
+              alt="dbt Logo"
+            />
+          </div>
+
+          <div class="security-audit">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/4/47/WithSecure_Logo.svg"
+              alt="WithSecure Logo"
+            />
+            <span
+              >We also intend to perform security audits using WithSecure.
+              WithSecure named Champion in the 2024 Endpoint Protection
+              Emotional Footprint Report. Corporate Cyber Security Solutions |
+              WithSecure™</span
+            >
+          </div>
         </div>
+      </div>
     </main>
 
     <!-- Ionicons -->
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
 
     <!-- Additional modules -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./static/js/scripts/landing/app.js"></script>
-</body>
-
+  </body>
 </html>
