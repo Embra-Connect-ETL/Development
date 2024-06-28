@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: dbt
-        image: lexaraprime/embra_connect_dbt_service
+        image: lexaraprime/embra_connect_dbt_service:latest
         ports:
         - containerPort: 3000
