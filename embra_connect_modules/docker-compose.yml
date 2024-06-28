@@ -3,7 +3,7 @@ version: "3.3"
 services:
   # Web-Client server
   server:
-    image: embra_connect_server
+    image: lexaraprime/embra_connect_server:latest
     build:
       context: ./server
     ports:
@@ -11,7 +11,7 @@ services:
 
   # DBT service
   dbt_service:
-    image: embra_connect_dbt_service
+    image: lexaraprime/embra_connect_dbt_service:latest
     build:
       context: ./services/dbt
     ports:

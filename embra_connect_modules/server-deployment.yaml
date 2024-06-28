@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: server
-        image: lexaraprime/embra_connect_server
+        image: lexaraprime/embra_connect_server:latest
         ports:
         - containerPort: 5500
