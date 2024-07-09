@@ -11,7 +11,7 @@
 
 
 
-FROM ubuntu:20.04
+FROM ubuntu:mantic-20240530
 
 # Set the environment variable for non-interactive installation
 ENV DEBIAN_FRONTEND=noninteractive
