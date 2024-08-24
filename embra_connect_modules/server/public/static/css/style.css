@@ -122,26 +122,20 @@ input:focus {
 .prompt-button {
   padding: 10px 20px;
   background: rgb(255, 99, 51);
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(rgba(255, 99, 51, 1)),
-    color-stop(37%, rgba(255, 109, 58, 0.8)),
-    color-stop(92%, rgba(255, 119, 65, 0))
-  );
-  background: -o-linear-gradient(
-    left,
-    rgba(255, 99, 51, 1) 0%,
-    rgba(255, 109, 58, 0.8) 37%,
-    rgba(255, 119, 65, 0) 92%
-  );
-  background: linear-gradient(
-    90deg,
-    rgba(255, 99, 51, 1) 0%,
-    rgba(255, 109, 58, 0.8) 37%,
-    rgba(255, 119, 65, 0) 92%
-  );
+  background: -webkit-gradient(linear,
+      left top,
+      right top,
+      from(rgba(255, 99, 51, 1)),
+      color-stop(37%, rgba(255, 109, 58, 0.8)),
+      color-stop(92%, rgba(255, 119, 65, 0)));
+  background: -o-linear-gradient(left,
+      rgba(255, 99, 51, 1) 0%,
+      rgba(255, 109, 58, 0.8) 37%,
+      rgba(255, 119, 65, 0) 92%);
+  background: linear-gradient(90deg,
+      rgba(255, 99, 51, 1) 0%,
+      rgba(255, 109, 58, 0.8) 37%,
+      rgba(255, 119, 65, 0) 92%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff6333", endColorstr="#ff7741", GradientType=1);
   -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
@@ -268,26 +262,20 @@ input:focus {
 
 .link:hover {
   background: rgb(255, 99, 51);
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(rgba(255, 99, 51, 1)),
-    color-stop(37%, rgba(255, 109, 58, 0.5078125)),
-    color-stop(92%, rgba(255, 119, 65, 0))
-  );
-  background: -o-linear-gradient(
-    left,
-    rgba(255, 99, 51, 1) 0%,
-    rgba(255, 109, 58, 0.5078125) 37%,
-    rgba(255, 119, 65, 0) 92%
-  );
-  background: linear-gradient(
-    90deg,
-    rgba(255, 99, 51, 1) 0%,
-    rgba(255, 109, 58, 0.5078125) 37%,
-    rgba(255, 119, 65, 0) 92%
-  );
+  background: -webkit-gradient(linear,
+      left top,
+      right top,
+      from(rgba(255, 99, 51, 1)),
+      color-stop(37%, rgba(255, 109, 58, 0.5078125)),
+      color-stop(92%, rgba(255, 119, 65, 0)));
+  background: -o-linear-gradient(left,
+      rgba(255, 99, 51, 1) 0%,
+      rgba(255, 109, 58, 0.5078125) 37%,
+      rgba(255, 119, 65, 0) 92%);
+  background: linear-gradient(90deg,
+      rgba(255, 99, 51, 1) 0%,
+      rgba(255, 109, 58, 0.5078125) 37%,
+      rgba(255, 119, 65, 0) 92%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff6333", endColorstr="#ff7741", GradientType=1);
   color: var(--white);
   font-weight: 700;
@@ -305,26 +293,20 @@ input:focus {
 
 .link-item:hover {
   background: rgb(255, 99, 51);
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(rgba(255, 99, 51, 1)),
-    color-stop(37%, rgba(255, 109, 58, 0.5078125)),
-    color-stop(92%, rgba(255, 119, 65, 0))
-  );
-  background: -o-linear-gradient(
-    left,
-    rgba(255, 99, 51, 1) 0%,
-    rgba(255, 109, 58, 0.5078125) 37%,
-    rgba(255, 119, 65, 0) 92%
-  );
-  background: linear-gradient(
-    90deg,
-    rgba(255, 99, 51, 1) 0%,
-    rgba(255, 109, 58, 0.5078125) 37%,
-    rgba(255, 119, 65, 0) 92%
-  );
+  background: -webkit-gradient(linear,
+      left top,
+      right top,
+      from(rgba(255, 99, 51, 1)),
+      color-stop(37%, rgba(255, 109, 58, 0.5078125)),
+      color-stop(92%, rgba(255, 119, 65, 0)));
+  background: -o-linear-gradient(left,
+      rgba(255, 99, 51, 1) 0%,
+      rgba(255, 109, 58, 0.5078125) 37%,
+      rgba(255, 119, 65, 0) 92%);
+  background: linear-gradient(90deg,
+      rgba(255, 99, 51, 1) 0%,
+      rgba(255, 109, 58, 0.5078125) 37%,
+      rgba(255, 119, 65, 0) 92%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff6333", endColorstr="#ff7741", GradientType=1);
   color: var(--white);
   -webkit-backdrop-filter: blur(20px);
@@ -368,26 +350,20 @@ input:focus {
   color: var(--white);
   font-weight: 700;
   background: rgb(255, 99, 51);
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(rgba(255, 99, 51, 1)),
-    color-stop(37%, rgba(255, 109, 58, 0.5078125)),
-    color-stop(92%, rgba(255, 119, 65, 0))
-  );
-  background: -o-linear-gradient(
-    left,
-    rgba(255, 99, 51, 1) 0%,
-    rgba(255, 109, 58, 0.5078125) 37%,
-    rgba(255, 119, 65, 0) 92%
-  );
-  background: linear-gradient(
-    90deg,
-    rgba(255, 99, 51, 1) 0%,
-    rgba(255, 109, 58, 0.5078125) 37%,
-    rgba(255, 119, 65, 0) 92%
-  );
+  background: -webkit-gradient(linear,
+      left top,
+      right top,
+      from(rgba(255, 99, 51, 1)),
+      color-stop(37%, rgba(255, 109, 58, 0.5078125)),
+      color-stop(92%, rgba(255, 119, 65, 0)));
+  background: -o-linear-gradient(left,
+      rgba(255, 99, 51, 1) 0%,
+      rgba(255, 109, 58, 0.5078125) 37%,
+      rgba(255, 119, 65, 0) 92%);
+  background: linear-gradient(90deg,
+      rgba(255, 99, 51, 1) 0%,
+      rgba(255, 109, 58, 0.5078125) 37%,
+      rgba(255, 119, 65, 0) 92%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff6333", endColorstr="#ff7741", GradientType=1);
   -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
@@ -543,23 +519,17 @@ input:focus {
 
 .dashboard-stat-card {
   background: rgb(255, 255, 255);
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(rgba(255, 255, 255, 1)),
-    to(rgba(249, 249, 249, 1))
-  );
-  background: -o-linear-gradient(
-    top,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(249, 249, 249, 1) 100%
-  );
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(249, 249, 249, 1) 100%
-  );
+  background: -webkit-gradient(linear,
+      left top,
+      left bottom,
+      from(rgba(255, 255, 255, 1)),
+      to(rgba(249, 249, 249, 1)));
+  background: -o-linear-gradient(top,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(249, 249, 249, 1) 100%);
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(249, 249, 249, 1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#f9f9f9", GradientType=1);
   border-radius: 18px;
   padding: 4rem;
@@ -607,26 +577,20 @@ input:focus {
 
 .suggested-step {
   background: rgb(255, 99, 51);
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(rgba(255, 99, 51, 1)),
-    color-stop(37%, rgba(255, 109, 58, 0.5078125)),
-    color-stop(92%, rgba(255, 119, 65, 0))
-  );
-  background: -o-linear-gradient(
-    left,
-    rgba(255, 99, 51, 1) 0%,
-    rgba(255, 109, 58, 0.5078125) 37%,
-    rgba(255, 119, 65, 0) 92%
-  );
-  background: linear-gradient(
-    90deg,
-    rgba(255, 99, 51, 1) 0%,
-    rgba(255, 109, 58, 0.5078125) 37%,
-    rgba(255, 119, 65, 0) 92%
-  );
+  background: -webkit-gradient(linear,
+      left top,
+      right top,
+      from(rgba(255, 99, 51, 1)),
+      color-stop(37%, rgba(255, 109, 58, 0.5078125)),
+      color-stop(92%, rgba(255, 119, 65, 0)));
+  background: -o-linear-gradient(left,
+      rgba(255, 99, 51, 1) 0%,
+      rgba(255, 109, 58, 0.5078125) 37%,
+      rgba(255, 119, 65, 0) 92%);
+  background: linear-gradient(90deg,
+      rgba(255, 99, 51, 1) 0%,
+      rgba(255, 109, 58, 0.5078125) 37%,
+      rgba(255, 119, 65, 0) 92%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff6333", endColorstr="#ff7741", GradientType=1);
   color: var(--white);
   -webkit-backdrop-filter: blur(20px);
@@ -751,26 +715,20 @@ input:focus {
   font-size: 1.2rem;
   letter-spacing: 1.1px;
   background: rgb(255, 99, 51);
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(rgba(255, 99, 51, 1)),
-    color-stop(37%, rgba(255, 109, 58, 0.5078125)),
-    color-stop(92%, rgba(255, 119, 65, 0))
-  );
-  background: -o-linear-gradient(
-    left,
-    rgba(255, 99, 51, 1) 0%,
-    rgba(255, 109, 58, 0.5078125) 37%,
-    rgba(255, 119, 65, 0) 92%
-  );
-  background: linear-gradient(
-    90deg,
-    rgba(255, 99, 51, 1) 0%,
-    rgba(255, 109, 58, 0.5078125) 37%,
-    rgba(255, 119, 65, 0) 92%
-  );
+  background: -webkit-gradient(linear,
+      left top,
+      right top,
+      from(rgba(255, 99, 51, 1)),
+      color-stop(37%, rgba(255, 109, 58, 0.5078125)),
+      color-stop(92%, rgba(255, 119, 65, 0)));
+  background: -o-linear-gradient(left,
+      rgba(255, 99, 51, 1) 0%,
+      rgba(255, 109, 58, 0.5078125) 37%,
+      rgba(255, 119, 65, 0) 92%);
+  background: linear-gradient(90deg,
+      rgba(255, 99, 51, 1) 0%,
+      rgba(255, 109, 58, 0.5078125) 37%,
+      rgba(255, 119, 65, 0) 92%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff6333", endColorstr="#ff7741", GradientType=1);
   color: var(--white);
   -webkit-backdrop-filter: blur(20px);
@@ -1247,26 +1205,20 @@ input:focus {
   font-size: 1.3rem;
   letter-spacing: 1.1px;
   background: rgb(255, 99, 51);
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(rgba(255, 99, 51, 1)),
-    color-stop(45%, rgba(255, 109, 58, 0.9)),
-    color-stop(100%, rgba(255, 119, 65, 0))
-  );
-  background: -o-linear-gradient(
-    left,
-    rgba(255, 99, 51, 1) 0%,
-    rgba(255, 109, 58, 0.9) 45%,
-    rgba(255, 119, 65, 0) 100%
-  );
-  background: linear-gradient(
-    90deg,
-    rgba(255, 99, 51, 1) 0%,
-    rgba(255, 109, 58, 0.9) 45%,
-    rgba(255, 119, 65, 0) 100%
-  );
+  background: -webkit-gradient(linear,
+      left top,
+      right top,
+      from(rgba(255, 99, 51, 1)),
+      color-stop(45%, rgba(255, 109, 58, 0.9)),
+      color-stop(100%, rgba(255, 119, 65, 0)));
+  background: -o-linear-gradient(left,
+      rgba(255, 99, 51, 1) 0%,
+      rgba(255, 109, 58, 0.9) 45%,
+      rgba(255, 119, 65, 0) 100%);
+  background: linear-gradient(90deg,
+      rgba(255, 99, 51, 1) 0%,
+      rgba(255, 109, 58, 0.9) 45%,
+      rgba(255, 119, 65, 0) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff6333", endColorstr="#ff7741", GradientType=1);
   color: var(--white);
   -webkit-backdrop-filter: blur(20px);
@@ -1334,6 +1286,26 @@ input:focus {
 ****** SECTION DIVIDER ********
 *******----------------********
 *******************************/
+
+#iframe-error-response {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#iframe-error-response p {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 1.4px;
+  color: var(--white);
+  background: var(--amber-level-1);
+  border-radius: 32px 60px 40px 60px;
+  padding: 4px;
+  padding-left: 21px;
+  padding-right: 21px;
+}
 
 /******************************
 *******----------------********
