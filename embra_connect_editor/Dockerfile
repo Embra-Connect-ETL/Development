@@ -1,16 +1,3 @@
-# <code-server> container configuration
-
-# Note: The standalone arm64 .deb does not support Ubuntu 16.04 or earlier. Please upgrade or build with npm.
-
-# curl -fOL https://github.com/coder/code-server/releases/download/v$VERSION/code-server_${VERSION}_amd64.deb
-# sudo dpkg -i code-server_${VERSION}_amd64.deb
-# sudo systemctl enable --now code-server@$USER
-# The code editor can be accessed at http://127.0.0.1:8080.
-
-# The <default> password can be found in ~/.config/code-server/config.yaml
-
-
-
 FROM ubuntu:mantic-20240530
 
 # Set the environment variable for non-interactive installation
@@ -38,7 +25,12 @@ USER coder
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/home/coder/.cargo/bin:${PATH}"
 
-RUN pip3 install --no-cache-dir pyspark polars
+# Create a Python virtual environment and install packages
+RUN python3 -m venv /home/coder/venv && \
+    /home/coder/venv/bin/pip install --no-cache-dir pyspark polars
+
+# Set the PATH to include the virtual environment
+ENV PATH="/home/coder/venv/bin:${PATH}"
 
 COPY ./bin /home/coder/.drivers
 
