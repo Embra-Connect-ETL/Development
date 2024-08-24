@@ -1,8 +1,7 @@
-use rocket::{get, routes, launch};
-use rocket::fs::{FileServer, relative};
+use rocket::fs::{relative, FileServer};
+use rocket::launch;
 
 #[launch]
 fn rocket() -> _ {
-    rocket::build()
-	.mount("/", FileServer::from(relative!("public")))
+    rocket::build().mount("/", FileServer::from(relative!("public")))
 }

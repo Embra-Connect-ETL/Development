@@ -212,26 +212,20 @@ h1 {
   text-align: left;
   letter-spacing: 1px;
   background: rgb(255, 99, 51);
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(rgba(255, 99, 51, 1)),
-    color-stop(90%, rgba(255, 109, 58, 0.5078125)),
-    color-stop(180%, rgba(255, 119, 65, 0))
-  );
-  background: -o-linear-gradient(
-    left,
-    rgba(255, 99, 51, 1) 0%,
-    rgba(255, 109, 58, 0.5078125) 90%,
-    rgba(255, 119, 65, 0) 180%
-  );
-  background: linear-gradient(
-    90deg,
-    rgba(255, 99, 51, 1) 0%,
-    rgba(255, 109, 58, 0.5078125) 90%,
-    rgba(255, 119, 65, 0) 180%
-  );
+  background: -webkit-gradient(linear,
+      left top,
+      right top,
+      from(rgba(255, 99, 51, 1)),
+      color-stop(90%, rgba(255, 109, 58, 0.5078125)),
+      color-stop(180%, rgba(255, 119, 65, 0)));
+  background: -o-linear-gradient(left,
+      rgba(255, 99, 51, 1) 0%,
+      rgba(255, 109, 58, 0.5078125) 90%,
+      rgba(255, 119, 65, 0) 180%);
+  background: linear-gradient(90deg,
+      rgba(255, 99, 51, 1) 0%,
+      rgba(255, 109, 58, 0.5078125) 90%,
+      rgba(255, 119, 65, 0) 180%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff6333", endColorstr="#ff7741", GradientType=1);
   border-radius: 32px 90px 81px 52px;
   color: var(--white);
