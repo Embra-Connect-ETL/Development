@@ -1,6 +1,6 @@
 let wrapper;
 
-function myFunction() {
+function preloader() {
   wrapper = setTimeout(showPage, 3000);
 }
 
