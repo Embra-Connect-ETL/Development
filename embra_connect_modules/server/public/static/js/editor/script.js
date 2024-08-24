@@ -33,48 +33,48 @@ class Notifications {
 //////////////////////////
 //// Preloader logic. ////
 //////////////////////////
-const iframe = document.getElementById("editor");
-const pageContent = document.getElementById("page-content");
-const loader = document.getElementById("loader");
+// const iframe = document.getElementById("editor");
+// const pageContent = document.getElementById("page-content");
+// const loader = document.getElementById("loader");
 
-loader.style.display = "block";
-iframe.style.display = "none";
+// loader.style.display = "block";
+// iframe.style.display = "none";
 
-// Set a timeout to handle cases where the iframe/<editor> takes too long to load.
-const loadTimeout = setTimeout(() => {
-  loader.style.display = "none";
-  iframe.style.display = "none";
+// // Set a timeout to handle cases where the iframe/<editor> takes too long to load.
+// const loadTimeout = setTimeout(() => {
+//   loader.style.display = "none";
+//   iframe.style.display = "none";
 
-  // Placeholder message incase the editor fails to load.
-  pageContent.innerHTML = `
-    <div id="iframe-error-response">
-        <div class="message">
-            <img src="" class="message-img" />
-            <p>Something went wrong...</p>
-        </div>
-    </div>
-  `;
+//   // Placeholder message incase the editor fails to load.
+//   pageContent.innerHTML = `
+//     <div id="iframe-error-response">
+//         <div class="message">
+//             <img src="" class="message-img" />
+//             <p>Something went wrong...</p>
+//         </div>
+//     </div>
+//   `;
 
-  Notifications.displayToasterMessage("Failed to load editor");
-}, 7000);
+//   Notifications.displayToasterMessage("Failed to load editor");
+// }, 7000);
 
-iframe.onload = function () {
-  // Clear the timeout since the iframe loaded successfully
-  clearTimeout(loadTimeout);
-  loader.style.display = "none";
-  iframe.style.display = "block";
+// iframe.onload = function () {
+//   // Clear the timeout since the iframe loaded successfully
+//   clearTimeout(loadTimeout);
+//   loader.style.display = "none";
+//   iframe.style.display = "block";
 
-  setTimeout(() => {
-    Notifications.displayToasterMessage("Setting up editor");
-  }, 900);
-};
+//   setTimeout(() => {
+//     Notifications.displayToasterMessage("Setting up editor");
+//   }, 900);
+// };
 
-// Handle <iframe> errors.
-iframe.onerror = function () {
-  // Clear timeout in case of any errors.
-  clearTimeout(loadTimeout);
-  loader.style.display = "none";
-  iframe.style.display = "none";
+// // Handle <iframe> errors.
+// iframe.onerror = function () {
+//   // Clear timeout in case of any errors.
+//   clearTimeout(loadTimeout);
+//   loader.style.display = "none";
+//   iframe.style.display = "none";
 
-  Notifications.displayToasterMessage("Failed to load content.");
-};
+//   Notifications.displayToasterMessage("Failed to load content.");
+// };
