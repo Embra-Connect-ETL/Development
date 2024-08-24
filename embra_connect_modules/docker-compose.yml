@@ -18,10 +18,7 @@ services:
       - 3000:3000
 
   editor:
-    image: lexaraprime/embra_connect_editor:1.0
-    deploy:
-      mode: replicated
-      replicas: 4
+    image: lexaraprime/embra_connect_editor:latest
     volumes:
       - /config
     ports:
