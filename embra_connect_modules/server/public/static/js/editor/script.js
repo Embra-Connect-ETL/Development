@@ -49,7 +49,7 @@ const loadTimeout = setTimeout(() => {
   pageContent.innerHTML = `
     <div id="iframe-error-response">
         <div class="message">
-            <img src="" class="message-img" />
+            <img src="../assets/emoticons/unhappy.png" alt="emoticon">
             <p>Something went wrong...</p>
         </div>
     </div>
