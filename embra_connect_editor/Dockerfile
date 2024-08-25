@@ -16,4 +16,5 @@ RUN rm -rf /var/lib/apt/lists/*
 
 EXPOSE 8888
 
-CMD ["start-notebook.sh", "--NotebookApp.tornado_settings={\"headers\": {\"Content-Security-Policy\": \"frame-ancestors 'self' *\"}}"]
+CMD ["start-notebook.sh", "--NotebookApp.token=''", "--NotebookApp.disable_check_xsrf=True", "--NotebookApp.allow_origin='*'", "--NotebookApp.tornado_settings={\"headers\": {\"Content-Security-Policy\": \"frame-ancestors 'self' *\"}}"]
+
