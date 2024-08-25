@@ -4,7 +4,7 @@
 ![Landing](https://github.com/Embra-Connect-ETL/Development/blob/master/previews/landing_page.png?raw=true)
 
 ### Code Editor
-![Editor]([https://github.com/Embra-Connect-ETL/Development/blob/master/previews/editor_small_laptop.jpeg?raw=true](https://github.com/Embra-Connect-ETL/Development/blob/master/previews/notebook.png?raw=true))
+![Editor](https://github.com/Embra-Connect-ETL/Development/blob/master/previews/notebook.png?raw=true)
 
 
 Welcome to **Embra Connect**!
