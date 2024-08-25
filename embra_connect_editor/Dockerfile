@@ -4,14 +4,15 @@ USER root
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
-# Update the PATH environment variable to include Cargo
+# Update the PATH environment variable to include cargo.
 ENV PATH="/home/jovyan/.cargo/bin:${PATH}"
 
 USER jovyan
 
 RUN pip install polars
 
-# Clean up any unnecessary files (no need to use apt-get clean since we didn't install apt packages)
+# Clean up any unnecessary files (no need to 
+# use apt-get clean since we didn't install apt packages).
 RUN rm -rf /var/lib/apt/lists/*
 
 EXPOSE 8888
