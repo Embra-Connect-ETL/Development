@@ -7,5 +7,5 @@ services:
     volumes:
       - /config
     ports:
-      - 8080:8080
+      - 8988:8888
     restart: unless-stopped

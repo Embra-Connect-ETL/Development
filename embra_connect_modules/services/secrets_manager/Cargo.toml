@@ -1,0 +1,13 @@
+[package]
+name = "secrets_manager"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.86"
+dotenvy = "0.15.7"
+serde = "1.0.209"
+tokio = { version = "1.39.3", features = ["full"] }
+vaultrs = "0.7.2"
