@@ -1,11 +1,13 @@
 ## Embra Connect
 
-Embra Connect is an open-source tool designed to streamline your ETL processes, making data integration simpler and more efficient. Unlike Databricks, Embra Connect can be run both locally and in the cloud, providing unmatched flexibility for data professionals.
+Embra Connect is an open-source ETL solution built for seamless data integration. 
+Designed for flexibility, it effortlessly handles local environments while easily scaling to the cloud, 
+empowering you to streamline your processes with confidence.
 
 ### Key Features
 
 1.  **ETL Capabilities**: Embra Connect focuses on ETL, ensuring that data extraction, transformation, and loading are as seamless as possible.
-2.  **Local and Cloud Deployment**: Run Embra Connect on your local machine for development and testing, or deploy it in the cloud for production. This flexibility sets it apart from Databricks, which can only be run in the cloud.
+2.  **Local and Cloud Deployment**: Run Embra Connect on your local machine for development and testing, or deploy it in the cloud for production.
 3.  **Pyspark Integration**: Leverage the power of Spark’s distributed data processing for large-scale data operations.
 4.  **Polars for High-Performance Computing**: Utilize Polars for high-performance, multithreaded computing on single nodes, offering significant improvements in speed and memory efficiency.
 5.  **Composable and Strict API**: Benefit from a more expressive API with fewer schema-related bugs, making your data workflows more robust.
