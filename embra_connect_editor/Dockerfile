@@ -1,13 +1,19 @@
-FROM ubuntu:latest
+FROM jupyter/pyspark-notebook:latest
 
-# Install necessary packages
-RUN apt-get update && apt-get install -y \
-    kate \
-    dbus-x11 \
-    x11-apps \
-    --no-install-recommends && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+USER root
 
-# Set environment variables for X11 forwarding
-ENV DISPLAY=:0
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
+# Update the PATH environment variable to include Cargo
+ENV PATH="/home/jovyan/.cargo/bin:${PATH}"
+
+USER jovyan
+
+RUN pip install polars
+
+# Clean up any unnecessary files (no need to use apt-get clean since we didn't install apt packages)
+RUN rm -rf /var/lib/apt/lists/*
+
+EXPOSE 8888
+
+CMD ["start-notebook.sh", "--NotebookApp.tornado_settings={\"headers\": {\"Content-Security-Policy\": \"frame-ancestors 'self' *\"}}"]
