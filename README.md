@@ -1,7 +1,7 @@
 ## Embra Connect
 
 ### Landing Page
-![Landing]()
+![Landing](https://github.com/Embra-Connect-ETL/Development/blob/master/previews/what_is_embra_connect.png?raw=true)
 
 Welcome to **Embra Connect**!
 
