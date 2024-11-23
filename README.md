@@ -5,7 +5,10 @@
 
 Welcome to **Embra Connect**!
 
-Embra Connect is an innovative open-source tool that revolutionizes your ETL (Extract, Transform, Load) processes, making data integration simpler, more efficient, and highly flexible. Designed with versatility in mind, Embra Connect can be seamlessly deployed both locally and in the cloud, offering unparalleled convenience for data professionals.
+<span>Embra Connect</span> is an open-source tool built to meet the unique demands of <strong>industrial biology, mathematics,</strong> and <strong>chemistry</strong>. By combining the precision of <strong>Rust</strong> with the flexibility of <strong>Render Cloud</strong>, Embra Connect streamlines your ETL processes, offering secure and scalable solutions for both local and cloud-based operations. Whether you're working with complex <strong>biological data, chemical simulations,</strong> or <strong>mathematical models</strong>, Embra Connect simplifies data integration and ensures that your workflows remain
+efficient, secure, and easy to manage. With both open-source and managed options, it's the perfect choice for data professionals in these specialized fields.
+
+----------
 
 ### Key Features:
 
