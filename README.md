@@ -1,11 +1,7 @@
 ## Embra Connect
 
 ### Landing Page
-![Landing](https://github.com/Embra-Connect-ETL/Development/blob/master/previews/landing_page.png?raw=true)
-
-### Code Editor
-![Editor](https://github.com/Embra-Connect-ETL/Development/blob/master/previews/notebook.png?raw=true)
-
+![Landing]()
 
 Welcome to **Embra Connect**!
 
