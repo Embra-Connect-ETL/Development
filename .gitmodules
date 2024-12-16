@@ -1,3 +1,6 @@
 [submodule "embra_connect_modules/server/public/pages/connect_ide"]
 	path = embra_connect_modules/server/public/pages/connect_ide
 	url = https://github.com/Embra-Connect-ETL/Connect-IDE.git
+[submodule "embra_connect_modules/server/public/pages/sdk"]
+	path = embra_connect_modules/server/public/pages/sdk
+	url = https://github.com/Embra-Connect-ETL/sdk.git
