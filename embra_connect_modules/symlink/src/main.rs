@@ -22,6 +22,8 @@ fn main() {
         PathBuf::from("../server/.env"),
         PathBuf::from("../services/dbt/.env"),
         PathBuf::from("../services/sdk/.env"),
+        PathBuf::from("../services/generic-auth-module/.env"),
+        PathBuf::from("../services/connect_ide/server/.env"),
     ];
 
     /*------------------------------------
