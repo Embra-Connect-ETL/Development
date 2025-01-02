@@ -125,3 +125,36 @@ This ensures that the submodule is removed from both the working directory and `
     
 
 These steps should make it easy for all collaborators to work with the submodules.
+
+## The following section can be helpful incase of any issues
+
+## 1. Deinitialize and remove the submodule
+```bash
+git submodule deinit -f embra_connect_modules/server/public/pages/connect_ide
+rm -rf embra_connect_modules/server/public/pages/connect_ide
+git rm --cached embra_connect_modules/server/public/pages/connect_ide
+```
+
+## 2. Commit the removal of the submodule
+```bash
+git add .gitmodules
+git add embra_connect_modules/server/public/pages/connect_ide
+git commit -m "Removed submodule embra_connect_modules/server/public/pages/connect_ide"
+```
+
+## 3. Re-add the submodule at the new location
+```bash
+git submodule add https://github.com/Embra-Connect-ETL/Connect-IDE.git embra_connect_modules/services/connect_ide
+```
+
+## 4. Commit the re-added submodule
+```bash
+git add .gitmodules
+git add embra_connect_modules/services/connect_ide
+git commit -m "Re-added submodule embra_connect_modules/services/connect_ide"
+```
+
+## 5. Push the changes
+```bash
+git push origin master  # or 'git push origin main' if you're working with 'main'
+```
