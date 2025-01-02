@@ -156,5 +156,5 @@ git commit -m "Re-added submodule embra_connect_modules/services/connect_ide"
 
 ## 5. Push the changes
 ```bash
-git push origin master  # or 'git push origin main' if you're working with 'main'
+git push origin master  # or 'git push origin <branch-name>' if you're working on a separate branch
 ```
