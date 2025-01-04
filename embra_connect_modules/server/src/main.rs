@@ -1,9 +1,8 @@
-use rocket::fs::{relative, FileServer};
-use rocket::launch;
 use rocket::fairing::{Fairing, Info, Kind};
+use rocket::fs::{relative, FileServer};
 use rocket::http::Header;
+use rocket::{launch, routes};
 use rocket::{Request, Response};
-
 
 pub struct CORS;
 
@@ -26,8 +25,18 @@ impl Fairing for CORS {
         response.set_header(Header::new("Access-Control-Allow-Credentials", "true"));
     }
 }
+/*-----------------------------------------
+Handle [RESPONSE] to preflight [REQUESTS].
+------------------------------------------*/
+#[rocket::options("/<_route_args..>")]
+pub async fn options(_route_args: Option<std::path::PathBuf>) -> rocket::http::Status {
+    rocket::http::Status::Ok
+}
 
 #[launch]
 fn rocket() -> _ {
-    rocket::build().attach(CORS).mount("/", FileServer::from(relative!("public")))
+    rocket::build()
+        .attach(CORS)
+        .mount("/", FileServer::from(relative!("public")))
+        .mount("/", routes![options])
 }
