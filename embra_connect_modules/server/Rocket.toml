@@ -1,7 +1,11 @@
+#-----------------------------------------
+# Service - landing, hosted documentation
+#-------------------------------------------
+
 [default]
 # Network settings
 address = "0.0.0.0"               # Listen on all network interfaces
-port = 8800                       # Port number
+port = 8000                       # Port number
 workers = 16                      # Number of threads for request handling (adjust to number of CPU cores)
 keep_alive = 5                    # Keep-alive timeout in seconds
 max_blocking = 512                # Maximum number of blocking operations allowed simultaneously
@@ -29,7 +33,7 @@ file = 52428800                   # Max size for uploaded files (50 MB)
 [global]
 # Global overrides for all environments
 address = "0.0.0.0"
-port = 8800
+port = 8000
 
 [global.limits]
 json = 52428800
