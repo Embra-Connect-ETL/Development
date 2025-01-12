@@ -191,7 +191,7 @@ input:focus {
   top: 0;
   height: 100vh;
   width: 300px;
-  border-right: 1px solid var(--cadet-gray);
+  border-right: 1px solid #c3c3c3ee;
 }
 
 /* ================= */
@@ -199,7 +199,7 @@ input:focus {
 .logo-container {
   text-align: center;
   padding: 1rem;
-  border-bottom: 1px solid var(--cadet-gray);
+  border-bottom: 1px solid #c3c3c3ee;
 }
 
 .logo {
@@ -531,7 +531,9 @@ input:focus {
       rgba(255, 255, 255, 1) 0%,
       rgba(249, 249, 249, 1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#f9f9f9", GradientType=1);
+  border: 2px solid #f4f4f4f9;
   border-radius: 18px;
+  box-shadow: 0 1rem 8rem 0 rgba(0, 0, 0, 0.05);
   padding: 4rem;
 }
 
@@ -577,27 +579,13 @@ input:focus {
 
 .suggested-step {
   background: rgb(255, 99, 51);
-  background: -webkit-gradient(linear,
-      left top,
-      right top,
-      from(rgba(255, 99, 51, 1)),
-      color-stop(37%, rgba(255, 109, 58, 0.5078125)),
-      color-stop(92%, rgba(255, 119, 65, 0)));
-  background: -o-linear-gradient(left,
-      rgba(255, 99, 51, 1) 0%,
-      rgba(255, 109, 58, 0.5078125) 37%,
-      rgba(255, 119, 65, 0) 92%);
-  background: linear-gradient(90deg,
-      rgba(255, 99, 51, 1) 0%,
-      rgba(255, 109, 58, 0.5078125) 37%,
-      rgba(255, 119, 65, 0) 92%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff6333", endColorstr="#ff7741", GradientType=1);
   color: var(--white);
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   padding: 1rem;
   border-radius: 9px;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: 1px;
   cursor: pointer;
@@ -781,11 +769,10 @@ input:focus {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 1rem 4rem;
-  border-radius: 4px 12px 42px 12px;
+  padding: 1.2rem 4rem;
+  border-radius: 12px 12px 24px 8px;
   background: var(--white);
-  border: 1px solid var(--off-white);
-  /* border-bottom: 3px solid var(--white-alt); */
+  border-bottom: 3px solid var(--white-alt);
   cursor: pointer;
   -webkit-transition: 0.3s all ease;
   -o-transition: 0.3s all ease;
