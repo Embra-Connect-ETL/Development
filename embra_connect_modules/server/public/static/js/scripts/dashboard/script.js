@@ -46,6 +46,10 @@ const analyticsTitle = document.getElementById("analytics-title");
 const analyticsInfo = document.getElementById("analytics-info");
 const suggestedSteps = document.getElementById("suggested-steps");
 const activityList = document.getElementById("activity-list");
+const trendTitle = document.getElementById("trend-title");
+const trendInfo = document.getElementById("trend-info");
+
+
 
 /****************************************
     The following section
@@ -116,7 +120,7 @@ const ENDPOINTS = Object.freeze({
 const COLOR_CODE = Object.freeze({
   SUCCESS: '#ffa07a',  // Amber for success.
   FAILURE: '#ff6347',  // Tomato for failure.
-  WARNING: '#f0e68c'   // Khaki (neutral) for warnings.
+  WARNING: '#ffa88f'   // Khaki (neutral) for warnings.
 });
 
 /****************************************************
@@ -243,6 +247,14 @@ function handleToken() {
   }
 }
 
+/*************************************
+* The following [Utility] function
+* handles [SESSION] owner retrieval.
+**************************************/
+function getUserCredentials() {
+  return localStorage.getItem("SESSION_OWNER") || "EC User";
+}
+
 onPageLoad();
 
 /****************************************
@@ -264,9 +276,16 @@ document.addEventListener("DOMContentLoaded", () => {
       <ion-icon name="server" class="server-icon"></ion-icon>
   `;
 
+  /***********************************
+   * Populate Analytics Overview card.
+   ***********************************/
   analyticsTitle.textContent = DASHBOARD_STATE.analyticsOverview.title;
   analyticsInfo.textContent = DASHBOARD_STATE.analyticsOverview.info;
 
+  /*******************************
+   * Populate suggested steps on
+   * Analytics Overview card.
+   ********************************/
   DASHBOARD_STATE.analyticsOverview.suggestedSteps.forEach(step => {
     const li = document.createElement("li");
     li.classList.add("suggested-step");
@@ -277,6 +296,15 @@ document.addEventListener("DOMContentLoaded", () => {
     suggestedSteps.appendChild(li);
   });
 
+  /*********************************
+   * Populate Trand Analysis card.
+   ********************************/
+  trendTitle.textContent = DASHBOARD_STATE.trendAnalysis.title;
+  trendInfo.textContent = DASHBOARD_STATE.trendAnalysis.info;
+
+  /****************************
+   * Populate Activity section.
+   *****************************/
   DASHBOARD_STATE.activityLog.forEach(activity => {
     const li = document.createElement("li");
     li.classList.add("activity");
@@ -304,10 +332,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/**
- * The following logic handles navigating to
- * the workspaces page.
- */
 /********************************************
  * Logic for navigating to the Workspace page.
  ********************************************/
@@ -315,8 +339,8 @@ document.querySelector(".link-item .navigate-to-workspaces-page").addEventListen
   event.preventDefault();
 
   // Retrieve session information.
-  const sessionToken = localStorage.getItem("SESSION_TOKEN"); // Replace with your session token key.
-  const sessionOwner = localStorage.getItem("SESSION_OWNER"); // Replace with your session owner key.
+  const sessionToken = localStorage.getItem("SESSION_TOKEN");
+  const sessionOwner = localStorage.getItem("SESSION_OWNER");
 
   if (!sessionToken || !sessionOwner) {
     showToast("Session information missing. Please log in again.", COLOR_CODE.FAILURE);
@@ -328,4 +352,17 @@ document.querySelector(".link-item .navigate-to-workspaces-page").addEventListen
 
   // Navigate to the Workspace page.
   window.location.href = TARGET_URL;
+});
+
+// Set profile info.
+document.addEventListener("DOMContentLoaded", () => {
+  const profileInfo = document.querySelector(".profile-link");
+  const credentials = getUserCredentials();
+
+  if (credentials) {
+    profileInfo.innerHTML += credentials;
+
+  } else {
+    profileInfo.innerHTML += "EC User";
+  }
 });
