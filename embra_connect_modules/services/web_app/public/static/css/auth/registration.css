@@ -1,0 +1,91 @@
+@import url("../common/variables.css");
+
+
+.main-wrapper {
+    padding: 2rem;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--white-alt)
+}
+
+.form-container {
+    border-top: 12px solid var(--amber-level-1);
+    background: var(--white);
+    padding: 4rem;
+    border-radius: 12px;
+    box-shadow: var(--level-5);
+}
+
+.form-container h1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2rem;
+    font-weight: 700;
+    gap: .6rem;
+    margin-bottom: 2rem;
+    color: var(--dark-gray);
+}
+
+.form-title-icon {
+    font-size: 2rem;
+    background: var(--amber-level-1);
+    color: var(--white);
+    padding: 1rem;
+    border-radius: 99px;
+    box-shadow: inset var(--level-2);
+}
+
+.input-wrapper {
+    width: 100%;
+}
+
+input {
+    width: 376px;
+    border: none;
+    padding: .8rem;
+    background: #e8e8e8ee;
+    border-radius: 6px;
+    border-left: 9px solid transparent;
+    transition: .2s all ease;
+}
+
+input:focus {
+    outline: none;
+    border-left: 9px solid var(--amber-level-1);
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.form-btn {
+    border: none;
+    padding: .8rem;
+    border-radius: 6px 9px 12px 24px;
+    background: var(--amber-level-1);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: .2s all ease;
+}
+
+.form-btn:hover {
+    box-shadow: var(--level-1);
+}
+
+.navigate-to-login-section {
+    text-align: center;
+    color: var(--dark-gray);
+    font-weight: 400;
+}
+
+.navigate-to-login-section a {
+    text-decoration: none;
+}

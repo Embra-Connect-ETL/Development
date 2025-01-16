@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../assets/favicons/favicon.ico" type="image/x-icon">
+
+    <!-- Icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- Toaster -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <link rel="stylesheet" href="../../static/css/auth/workspaces.css">
+
+    <title>Embra Connect | Workspaces</title>
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="side-panel">
+            <div class="workspace-page-title">
+                <h2 class="page-title"
+                    title="Workspaces in Embra Connect provide a collaborative environment designed to enhance team productivity and streamline workflows. ">
+                    Workspaces
+                    <ion-icon name="albums" class="page-title-icon"></ion-icon>
+                </h2>
+            </div>
+
+            <!-- Workspace actions i.e create workspaces, navigate to previous pages etc (Side bar) -->
+            <div class="workspace-side-panel-action-btns">
+                <button class="side-panel-action-btn">
+                    <ion-icon name="add-circle" class="side-panel-icon"></ion-icon>
+                    Create Workspace
+                </button>
+
+                <button class="side-panel-action-btn">
+                    <ion-icon name="arrow-undo" class="side-panel-icon"></ion-icon>
+                    Back
+                </button>
+
+                <button class="side-panel-action-btn">
+                    <ion-icon name="log-out" class="side-panel-icon"></ion-icon>
+                    Log Out
+                </button>
+            </div>
+
+            <!-- Profile area -->
+            <div class="profile-area"></div>
+
+            <!-- Modal for creating a new workspace -->
+            <div id="create-workspace-modal" class="modal hidden">
+                <div class="modal-content">
+                    <h2>
+                        <ion-icon name="add-circle" class="create-workspace-icon"></ion-icon>
+                        Create New Workspace
+                    </h2>
+
+                    <!-- Input wrapper -->
+                    <div class="create-workspace-input-wrapper">
+                        <input type="text" id="new-workspace-name" placeholder="Enter workspace name" required>
+                    </div>
+
+                    <!-- Action buttons -->
+                    <div class="modal-actions">
+                        <button id="create-workspace-btn">
+                            <ion-icon name="checkmark-circle" class="create-icon"></ion-icon>
+                            Create
+                        </button>
+                        <button id="cancel-workspace-btn">
+                            <ion-icon name="close-circle" class="cancel-icon"></ion-icon>
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Workspace preview area  -->
+        <div class="workspace-container">
+
+            <!-- Search bar -->
+            <div class="search-area">
+                <input type="text" id="search-field" placeholder="⌕ Can't find a workspace, let's help...">
+            </div>
+
+            <div class="user-workspaces">
+                <!-- <div class="workspace-entry">
+                    <h2 class="workspace-title">
+                        <ion-icon name="albums" class="workspace-entry-icon"></ion-icon>
+                        demo workspace
+                    </h2>
+
+                    <div class="workspace-section-divider">
+                        <p class="workspace-creation-date">
+                            Thur 1st 2024
+                        </p>
+
+                        <div class="workspace-action-btns">
+                            <button class="update-workspace-btn">
+                                <ion-icon name="create" class="workspace-entry-btn-icon"></ion-icon>
+                            </button>
+
+                            <button class="delete-workspace-btn">
+                                <ion-icon name="trash-bin" class="workspace-entry-btn-icon"></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <script src="../../static/js/auth/workspaces.js"></script>
+</body>
+
+</html>

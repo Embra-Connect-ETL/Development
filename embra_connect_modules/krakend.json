@@ -1,0 +1,184 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://www.krakend.io/schema/krakend.json",
+    "title": "Schema validation for the latest version of KrakenD. Consider sticking to the specific version you are using.",
+    "allOf": [
+        {
+            "$ref": "v2.8/krakend.json"
+        }
+    ],
+    "version": 3,
+    "name": "API Gateway",
+    "port": 8081,
+    "cache_ttl": "3600s",
+    "output_encoding": "json",
+    "endpoints": [
+        {
+            "endpoint": "/register", 
+            "method": "GET", 
+            "backend": [
+                {
+                    "url_pattern": "/index.html",
+                    "host": [
+                        "http://localhost:9000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/login", 
+            "method": "GET", 
+            "backend": [
+                {
+                    "url_pattern": "/login/index.html",
+                    "host": [
+                        "http://localhost:9000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/workspaces",
+            "method": "GET",
+            "backend": [
+                {
+                    "url_pattern": "/workspaces/index.html",
+                    "host": [
+                        "http://localhost:9000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/projects",
+            "method": "GET",
+            "backend": [
+                {
+                    "url_pattern": "/projects/index.html",
+                    "host": [
+                        "http://localhost:9000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/register",
+            "method": "POST",
+            "backend": [
+                {
+                    "url_pattern": "/register",
+                    "host": [
+                        "http://localhost:9000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/login",
+            "method": "POST",
+            "backend": [
+                {
+                    "url_pattern": "/login",
+                    "host": [
+                        "http://localhost:9000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/validate_token",
+            "method": "POST",
+            "backend": [
+                {
+                    "url_pattern": "/validate_token",
+                    "host": [
+                        "http://localhost:9000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/workspace",
+            "method": "POST",
+            "backend": [
+                {
+                    "url_pattern": "/workspace",
+                    "host": [
+                        "http://localhost:7000"
+                    ]
+                }
+            ],
+            "extra_config": {
+                "auth/validator": {
+                    "alg": "HS256",
+                    "custom_validation": true,
+                    "required_token_field": "token",
+                    "endpoint": "/validate_token",
+                    "host": [
+                        "http://localhost:9000"
+                    ]
+                }
+            }
+        },
+        {
+            "endpoint": "/project",
+            "method": "POST",
+            "backend": [
+                {
+                    "url_pattern": "/project",
+                    "host": [
+                        "http://localhost:7000"
+                    ]
+                }
+            ],
+            "extra_config": {
+                "auth/validator": {
+                    "alg": "HS256",
+                    "custom_validation": true,
+                    "required_token_field": "token",
+                    "endpoint": "/validate_token",
+                    "host": [
+                        "http://localhost:9000"
+                    ]
+                }
+            }
+        },
+        {
+            "endpoint": "/directory",
+            "method": "POST",
+            "backend": [
+                {
+                    "url_pattern": "/directory",
+                    "host": [
+                        "http://localhost:7000"
+                    ]
+                }
+            ],
+            "extra_config": {
+                "auth/validator": {
+                    "alg": "HS256",
+                    "custom_validation": true,
+                    "required_token_field": "token",
+                    "endpoint": "/validate_token",
+                    "host": [
+                        "http://localhost:9000"
+                    ]
+                }
+            }
+        }
+    ],
+    "extra_config": {
+        "rate_limit": {
+            "max_rate": 100,
+            "client_max_rate": 10
+        },
+        "env": {
+            "development": {
+                "log_level": "DEBUG"
+            },
+            "production": {
+                "log_level": "INFO"
+            }
+        }
+    }
+}

@@ -19,7 +19,7 @@ fn main() {
     symlinks for all projects.
     ----------------------------------------*/
     let target_env_paths: Vec<PathBuf> = vec![
-        PathBuf::from("../server/.env"),
+        PathBuf::from("../services/web_app/.env"),
         PathBuf::from("../services/dbt/.env"),
         PathBuf::from("../services/sdk/.env"),
         PathBuf::from("../services/generic-auth-module/.env"),
