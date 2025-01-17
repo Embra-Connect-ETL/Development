@@ -1,209 +1,10 @@
-/****************************************
-    The following section
-    contains the [BASE] url and necessary
-    [ENDPOINT] definitions.
-*****************************************/
-const BASE_URL = "http://localhost";
-
-const PORT = Object.freeze({
-    AUTH: 9000,
-    EDITOR: 7000,
-    WORKSPACES: 7000,
-    PROJECTS: 7000,
-    GENERAL: 8000
-});
-
-const PAGES = Object.freeze({
-    BASE: "/index.html",
-    LOGIN: "/login/index.html",
-    DASHBOARD: "/pages/dashboard.html",
-    CONFIG: "/pages/config.html",
-    WORKSPACES: "/workspaces/index.html",
-    PROJECTS: "/projects/index.html"
-});
-
-const ROUTES = Object.freeze({
-    REGISTER: "/register",
-    LOGIN: "/login",
-    SESSION_VALIDATION: "/validate_token",
-    WORKSPACE_MANAGEMENT: "/workspace",
-    PROJECT_MANAGEMENT: "/project",
-    DIRECTORY_MANAGEMENT: "/directory"
-});
-
-const ENDPOINTS = Object.freeze({
-    // User management.
-    REGISTRATION: `${BASE_URL}:${PORT.AUTH}${ROUTES.REGISTER}`,
-    LOGIN: `${BASE_URL}:${PORT.AUTH}${ROUTES.LOGIN}`,
-    AUTHORIZATION: `${BASE_URL}:${PORT.AUTH}${ROUTES.SESSION_VALIDATION}`,
-    REGISTRATION_PAGE: `${BASE_URL}:${PORT.AUTH}${PAGES.BASE}`,
-    LOGIN_PAGE: `${BASE_URL}:${PORT.AUTH}${PAGES.LOGIN}`,
-
-    // Analytics.
-    DASHBOARD_PAGE: `${BASE_URL}:${PORT.GENERAL}${PAGES.DASHBOARD}`,
-
-    // File management.
-    EDITOR_PAGE: `${BASE_URL}:${PORT.EDITOR}${PAGES.BASE}`,
-    DIRECTORY_MANAGEMENT: `${BASE_URL}:${PORT.EDITOR}${ROUTES.DIRECTORY_MANAGEMENT}`,
-    FILE_MANAGEMENT: `${BASE_URL}:${PORT.EDITOR}`,
-
-    // Connection management.
-    CONFIG_PAGE: `${BASE_URL}:${PORT.GENERAL}${PAGES.CONFIG}`,
-
-    // Workspace management.
-    WORKSPACE_PAGE: `${BASE_URL}:${PORT.AUTH}${PAGES.WORKSPACES}`,
-    WORKSPACE_MANAGEMENT: `${BASE_URL}:${PORT.WORKSPACES}${ROUTES.WORKSPACE_MANAGEMENT}`,
-
-    // Project management.
-    PROJECT_PAGE: `${BASE_URL}:${PORT.AUTH}${PAGES.PROJECTS}`,
-    PROJECT_MANAGEMENT: `${BASE_URL}:${PORT.PROJECTS}${ROUTES.PROJECT_MANAGEMENT}`
-});
-
-/**********************************
-    The following section contains
-    the [COLOR] codes for the
-    different toaster messages.
-**********************************/
-const COLOR_CODE = Object.freeze({
-    SUCCESS: '#ffa07a',  // Amber for success.
-    FAILURE: '#ff6347',  // Tomato for failure.
-    WARNING: '#ffa88f'   // Khaki (neutral) for warnings.
-});
-
-/****************************************************
- * Utility Functions
- * 
- * These functions are designed to simplify common tasks 
- * such as showing notifications (e.g., `showToast`,
- * `validateToken`, `onPageLoad`, `handleToken`,
- * `getSessionToken`).
-****************************************************/
-function showToast(message, backgroundColor) {
-    Toastify({
-        text: message,
-        duration: 3000,
-        gravity: "bottom",
-        position: "right",
-        style: {
-            background: backgroundColor,
-            color: "#ffffff",
-            borderRadius: "9px 21px 36px 32px",
-            fontWeight: "300",
-            letterSpacing: "1.4px",
-            textTransform: "capitalize",
-            boxShadow: "0 1rem 1rem 0 rgba(0, 0, 0, .05)",
-        }
-    }).showToast();
-}
-
-/****************************************
- * The following [Utility] function
- *  handles redirects to the login page.
- ****************************************/
-function redirectToLogin() {
-    window.location.href = ENDPOINTS.LOGIN_PAGE;
-}
-
-/*****************************************
- * The following [Utility] function
- * handles [SESSION] i.e token validation
- *****************************************/
-async function validateToken(token) {
-    try {
-        const response = await fetch(ENDPOINTS.AUTHORIZATION, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
-            },
-            credentials: 'same-origin'
-        });
-
-        if (response.ok) {
-            console.warn("Session is valid.");
-            return true;
-        } else {
-            console.warn("Session invalid or expired.");
-
-            /***************************************
-             * Clear invalid token i.e token, owner,
-             * workspace & project info etc.  
-             ************************************/
-            localStorage.removeItem("SESSION_TOKEN");
-            localStorage.removeItem("SESSION_OWNER");
-            localStorage.removeItem("workspace_id");
-            localStorage.removeItem("project_id");
-
-            redirectToLogin();
-            return false;
-        }
-    } catch (error) {
-        console.error("Error validating session:", error);
-        redirectToLogin();
-        return false;
-    }
-}
-
-/*********************************************
- * The following [Utility] function
- * handles [SESSION] validation on page load.
- *********************************************/
-async function onPageLoad() {
-    handleToken();
-    const token = localStorage.getItem("SESSION_TOKEN");
-    if (token) { await validateToken(token); }
-}
-
-/*************************************
- * The following [Utility] function
- * handles [SESSION] token retrieval.
- **************************************/
-function getSessionToken() {
-    return localStorage.getItem("SESSION_TOKEN");
-}
-
-/*************************************
- * The following [Utility] function
- * handles [SESSION] owner retrieval.
- **************************************/
-function getUserCredentials() {
-    return localStorage.getItem("SESSION_OWNER") || "EC User";
-}
-
-/*****************************
-    Handle token extraction, 
-    validation, and fallback
-******************************/
-function handleToken() {
-    const params = new URLSearchParams(window.location.search);
-    const credentials = params.get("owner");
-    const urlToken = params.get("session");
-    const workspaceId = params.get("workspace_id");
-    const storedToken = localStorage.getItem("SESSION_TOKEN");
-
-    if (urlToken && credentials && workspaceId) {
-        localStorage.setItem("SESSION_TOKEN", urlToken);
-        localStorage.setItem("SESSION_OWNER", credentials);
-        localStorage.setItem("workspace_id", workspaceId);
-
-        /***********************************
-        * Clean up URL (remove url params.)
-        ************************************/
-        window.history.replaceState({}, document.title, window.location.pathname);
-
-        console.warn("Session info. updated.");
-    } else if (storedToken) {
-        // [TO DO] -  Validate if necessary [IMPORTANT]
-        console.warn("Using existing Session info.");
-    } else {
-        console.warn("Session info. not found. Redirecting to login.");
-        redirectToLogin();
-    }
-}
-
 onPageLoad();
 
-// Function to render projects
+/****************************************************
+ * The following logic handles project rendering.  
+ * It will create a list of projects
+ * owned by the user on the project UI.
+ ***********************************************/
 function renderProjects(projects) {
     const container = document.querySelector(".user-projects");
     container.innerHTML = ""; // Clear existing entries
@@ -289,13 +90,12 @@ async function fetchProjects() {
  ******************************/
 async function createProject(projectName) {
     const workspaceId = localStorage.getItem("workspace_id");
-    const projectTYpe = document.getElementById("project-type").value;
     const token = getSessionToken();
 
     const data = {
         workspace_id: workspaceId,
         name: projectName,
-        project_type: projectTYpe,
+        project_type: "dbt", // Temporarily set 'dbt' as the default project type.
         token: token
     };
 
@@ -452,7 +252,7 @@ function attachEventListeners() {
             // Redirect after a short delay
             setTimeout(() => {
                 window.location.href = TARGET_URL;
-            }, 2000);
+            }, 500);
         });
     });
 

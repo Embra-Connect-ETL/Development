@@ -1,0 +1,25 @@
+@import url("./variables.css");
+@import url("./animations.css");
+
+#context-menu {
+    position: absolute;
+    z-index: 1000;
+    background-color: white;
+    border: 1px solid #ccc;
+    display: none;
+}
+
+#context-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 5px 0;
+}
+
+#context-menu li {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#context-menu li:hover {
+    background-color: #f0f0f0;
+}

@@ -1,0 +1,56 @@
+plugins {
+    id 'base'
+}
+
+def editorServiceBinaryName = "connect_ide_service"
+def editorServiceDockerImageName = "connect_ide_base_image"
+def dockerImageTag = "latest" 
+def dockerRegistry = "docker.io" // Container registry (e.g., ghcr.io, docker.io)
+
+// Directories
+def serverProjectDir = file("server")
+def serverDockerfileDir = file("server")
+
+// Build Rust binary
+task buildRustBinary(type: Exec) {
+    workingDir = serverProjectDir
+    commandLine "cargo", "build", "--release"
+    doLast {
+        println "Build successful!"
+    }
+}
+
+// Build Base image
+task buildDockerImage(type: Exec) {
+    dependsOn buildRustBinary
+    workingDir = serverDockerfileDir
+    commandLine "sudo", "docker", "build", "--build-arg", "OCI_PATH=.oci", "-t", "${editorServiceDockerImageName}:${dockerImageTag}", "."
+    doLast {
+        println "Base image built successfully!"
+    }
+}
+
+// Tag Base image
+task tagDockerImage(type: Exec) {
+    dependsOn buildDockerImage
+    commandLine "sudo", "docker", "tag", "${editorServiceDockerImageName}:${dockerImageTag}", "${dockerRegistry}/${editorServiceDockerImageName}:${dockerImageTag}"
+    doLast {
+        println "Base image tagged successfully!"
+    }
+}
+
+// Publish Docker image
+task pushDockerImage(type: Exec) {
+    dependsOn tagDockerImage
+    commandLine "sudo", "docker", "push", "${dockerRegistry}/${editorServiceDockerImageName}:${dockerImageTag}"
+    doLast {
+        println "Docker image pushed successfully!"
+    }
+}
+
+// Aggregate task to build and push everything
+task buildAndPushDocker {
+    dependsOn pushDockerImage
+    group = "build"
+    description = "Build Rust binary, Docker image, tag, and push"
+}

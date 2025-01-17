@@ -15,6 +15,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
     <link rel="stylesheet" href="../../static/css/auth/projects.css">
+    <script src="../../static/js/main/constants.js"></script>
 
     <title>Embra Connect | Projects</title>
 </head>
@@ -64,14 +65,10 @@
                         <input type="text" id="new-project-name" placeholder="Enter project name" required>
                     </div>
 
-                    <!-- Input wrapper -->
-                    <div class="create-project-input-wrapper">
-                        <select name="project-type" id="project-type">
-                            <option value="">Please choose a project type</option>
-                            <option value="dbt">DBT</option>
-                            <option value="rust">Polars</option>
-                        </select>
-                    </div>
+                    <p class="create-project-description">
+                        <ion-icon name="information-circle" class="create-project-icon"></ion-icon>
+                        This will create a dbt project in your current workspace
+                    </p>
 
                     <!-- Action buttons -->
                     <div class="modal-actions">

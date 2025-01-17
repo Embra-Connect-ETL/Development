@@ -1,0 +1,21 @@
+{
+  "name": "editor",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js && javascript-obfuscator dist/bundle.js --output dist/bundle.obfuscated.js"
+  },
+  "keywords": [],
+  "author": "Irfan M. Ghat",
+  "license": "ISC",
+  "description": "Connect IDE editor component",
+  "devDependencies": {
+    "javascript-obfuscator": "^4.1.1",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "monaco-editor": "^0.52.2"
+  }
+}

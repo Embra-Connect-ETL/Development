@@ -71,7 +71,7 @@ const ENDPOINTS = Object.freeze({
     DASHBOARD_PAGE: `${BASE_URL}:${PORT.BASE}${PAGES.DASHBOARD}`,
 
     // File management.
-    EDITOR_PAGE: `${BASE_URL}:${PORT.BASE}${PAGES.BASE}`,
+    EDITOR_PAGE: `${BASE_URL}:${PORT.BASE}${PAGES.EDITOR}`,
 
     // Connection management.
     CONFIG_PAGE: `${BASE_URL}:${PORT.BASE}${PAGES.CONFIG}`,
@@ -84,7 +84,7 @@ const ENDPOINTS = Object.freeze({
 // [DEBUG] logs.
 for (let key in ENDPOINTS) {
     if (ENDPOINTS.hasOwnProperty(key)) {
-        console.log(key, ENDPOINTS[key])
+        console.warn(key, ENDPOINTS[key])
         console.log("\n");
     }
 }
@@ -134,6 +134,54 @@ function redirectToLogin() {
     window.location.href = ENDPOINTS.LOGIN_PAGE;
 }
 
+/*************************************
+ * The following [Utility] function
+ * handles [SESSION] token retrieval.
+ **************************************/
+function getSessionToken() {
+    return localStorage.getItem("SESSION_TOKEN");
+}
+
+/*****************************
+  Handle token extraction, 
+  validation, and fallback
+******************************/
+function handleToken() {
+    const params = new URLSearchParams(window.location.search);
+    const workspaceId = params.get("workspace_id") || "n/a";
+    const projectId = params.get("project_id") || "n/a";
+    const credentials = params.get("owner");
+    const urlToken = params.get("session");
+
+
+    /**********************************
+    Chack for existing [SESSION] info.
+    ***********************************/
+    const storedCredentials = localStorage.getItem("SESSION_OWNER");
+    const storedToken = localStorage.getItem("SESSION_TOKEN");
+
+    if (urlToken && credentials) {
+        localStorage.setItem("SESSION_TOKEN", urlToken);
+        localStorage.setItem("SESSION_OWNER", credentials);
+        localStorage.setItem("workspace_id", workspaceId);
+        localStorage.setItem("project_id", projectId);
+
+        /***********************************
+         * Clean up URL (remove url params.)
+         ************************************/
+        window.history.replaceState({}, document.title, window.location.pathname);
+
+        console.warn("Session info. updated.");
+
+    } else if (storedToken && storedCredentials) {
+        // [TO DO] -  Validate if necessary [IMPORTANT]
+        console.warn("Using existing Session info.");
+    } else {
+        console.warn("Session info. not found. Redirecting to login.");
+        redirectToLogin();
+    }
+}
+
 /*****************************************
  * The following [Utility] function
  * handles [SESSION] i.e token validation
@@ -146,7 +194,6 @@ async function validateToken(token) {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`,
             },
-            credentials: 'same-origin'
         });
 
         if (response.ok) {
@@ -160,11 +207,17 @@ async function validateToken(token) {
              * Clear invalid token i.e token, owner,
              * workspace & project info etc.  
              ************************************/
-            localStorage.removeItem("SESSION_TOKEN");
-            localStorage.removeItem("SESSION_OWNER");
-            localStorage.removeItem("PROJECT_KEY");
-            localStorage.removeItem("workspace_id");
-            localStorage.removeItem("project_id");
+            const SESSION_KEYS = [
+                "SESSION_TOKEN",
+                "SESSION_OWNER",
+                "PROJECT_KEY",
+                "PROJECT_TYPE",
+                "ROOT_KEY",
+                "workspace_id",
+                "project_id"
+            ];
+
+            SESSION_KEYS.forEach(key => localStorage.removeItem(key));
 
             redirectToLogin();
             return false;
@@ -184,14 +237,6 @@ async function onPageLoad() {
     handleToken();
     const token = localStorage.getItem("SESSION_TOKEN");
     if (token) { await validateToken(token); }
-}
-
-/*************************************
- * The following [Utility] function
- * handles [SESSION] token retrieval.
- **************************************/
-function getSessionToken() {
-    return localStorage.getItem("SESSION_TOKEN");
 }
 
 /*************************************

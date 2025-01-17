@@ -1,0 +1,15 @@
+@media (max-width: 1366px) {
+    html {
+        font-size: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    #tree-wrapper {
+        width: 200px;
+    }
+
+    .tab {
+        font-size: 14px;
+    }
+}
