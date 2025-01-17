@@ -45,13 +45,13 @@
 
                 <!-- Toolbar Section -->
                 <div id="sidebar-toolbar">
-                    <button class="sidebar-btn" id="add-file-btn">
+                    <button class="sidebar-btn" id="add-file-btn" title="Create a file">
                         <ion-icon name="document"></ion-icon>
                     </button>
-                    <button class="sidebar-btn" id="add-folder-btn">
+                    <button class="sidebar-btn" id="add-folder-btn" title="Create a folder">
                         <ion-icon name="folder"></ion-icon>
                     </button>
-                    <button class="sidebar-btn" id="settings-btn">
+                    <button class="sidebar-btn" id="settings-btn" title="Toggle settings">
                         <ion-icon name="settings"></ion-icon>
                     </button>
                     <button class="sidebar-btn" id="back-btn" title="Navigate to projects">
@@ -128,7 +128,7 @@
                     <div class="command-input-wrapper">
                         <ion-icon name="terminal" class="terminal-icon"></ion-icon>
                         <input type="text" id="command-input"
-                            placeholder="load_genomic_data --file &quot;sample_data/sequence.fasta&quot; --format &quot;fasta&quot; --verbose">
+                            placeholder="dbt run --select tag:my_tag+ --exclude tag:exclude_tag">
                     </div>
 
                     <button class="run-command-btn">
