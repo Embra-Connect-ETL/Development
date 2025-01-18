@@ -35,35 +35,56 @@ async function executeCommand(command) {
             token: localStorage.getItem("SESSION_TOKEN"),
         };
 
-        // Simulate command execution (replace with this block for running tests without relying on API calls)
-        // await new Promise(resolve => setTimeout(resolve, 1000));
-
         const response = await fetch(`${COMMAND_EXECUTION}/execute`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
         });
 
-        if (!response.ok) throw new Error("Failed to execute command");
+        if (!response.ok) {
+            throw new Error(`HTTP error: ${response.status}`);
+        }
 
         const result = await response.json();
-        if (result.status !== "success") throw new Error("Command execution failed");
 
-        saveCommandToHistory(command);
-        loadCommandHistory();
-        updatePreviousCommand();
-        commandLogs.innerHTML = `<p>Command executed successfully: ${command}</p>`;
-        downloadLogsButton.disabled = false;
+        if (result.success) {
+            // Handle success case
+            const output = result.output || "Command executed successfully (no output)";
+            commandLogs.innerHTML = `<pre class="dbt-logs">${output}</pre>`;
+            commandStatus.textContent = "Success";
+            commandStatus.classList.replace("running", "success");
+            downloadLogsButton.disabled = false;
+        } else if (result.error) {
+            // Handle execution error case
+            const error = result.error || "Unknown error occurred during execution.";
+            commandLogs.innerHTML = `<p class="default-message">Error:</p><pre>${error}</pre>`;
+            commandStatus.textContent = "Error";
+            commandStatus.classList.replace("running", "error");
+        } else if (result.message) {
+            // Handle validation/timeout errors
+            const message = result.message || "Something went wrong.";
+            commandLogs.innerHTML = `<p class="default-message">Error:</p><pre>${message}</pre>`;
+            commandStatus.textContent = "Error";
+            commandStatus.classList.replace("running", "error");
+        }
     } catch (error) {
-        commandLogs.innerHTML = `<p class="default-message">Error: ${error.message}</p>`;
+        // Handle network or unexpected errors
+        console.error("Unexpected error:", error);
+        commandLogs.innerHTML = `<p class="default-message">Unexpected error occurred:</p><pre>${error.message}</pre>`;
         commandStatus.textContent = "Error";
         commandStatus.classList.replace("running", "error");
     } finally {
+        // Update command history
+        updateCommandHistory(command);
+
+        // Reset UI to idle state
         currentCommand = null;
         runCommandButton.disabled = false;
         cancelCommandButton.disabled = true;
-        commandStatus.textContent = "Idle";
-        commandStatus.classList.replace("running", "idle");
+        if (commandStatus.textContent === "Running") {
+            commandStatus.textContent = "Idle";
+            commandStatus.classList.replace("running", "idle");
+        }
     }
 }
 
@@ -83,17 +104,52 @@ function cancelCommand() {
     document.querySelector(".run-command-btn").disabled = false;
 }
 
-// Load command history
+// Load command history into the UI
 function loadCommandHistory() {
-    const historyList = document.getElementById("history-list");
-    const history = JSON.parse(localStorage.getItem(commandHistoryKey)) || [];
+    const commandHistory = JSON.parse(localStorage.getItem(commandHistoryKey)) || [];
+    const commandHistoryContainer = document.getElementById("history-list");
 
-    historyList.innerHTML = history.length
-        ? history.map(cmd => `<li>${cmd}</li>`).join("")
-        : `<li class="default-message">
-                <ion-icon name="hammer"></ion-icon>
-                Most recent commands will appear here.
-            </li>`;
+    // Clear existing history display
+    commandHistoryContainer.innerHTML = "";
+
+    // If there is no history, show default message
+    if (commandHistory.length === 0) {
+        const defaultMessage = document.createElement("li");
+        defaultMessage.classList.add("default-message");
+        defaultMessage.textContent = "Most recent commands will appear here.";
+        commandHistoryContainer.appendChild(defaultMessage);
+    } else {
+        // Populate the history display
+        commandHistory.forEach((command, index) => {
+            const commandItem = document.createElement("li");
+            commandItem.className = "history-item";
+            commandItem.textContent = command;
+            commandItem.addEventListener("click", () => executeCommand(command)); // Re-execute on click
+            commandHistoryContainer.appendChild(commandItem);
+        });
+    }
+}
+
+// Update command history in localStorage and UI
+function updateCommandHistory(command) {
+    let commandHistory = JSON.parse(localStorage.getItem(commandHistoryKey)) || [];
+
+    // Remove the command if it already exists (to prevent duplicates)
+    commandHistory = commandHistory.filter((item) => item !== command);
+
+    // Add the command to the top of the history
+    commandHistory.unshift(command);
+
+    // Enforce max history size
+    if (commandHistory.length > maxHistory) {
+        commandHistory = commandHistory.slice(0, maxHistory);
+    }
+
+    // Save updated history back to localStorage
+    localStorage.setItem(commandHistoryKey, JSON.stringify(commandHistory));
+
+    // Refresh UI
+    loadCommandHistory();
 }
 
 // Save command to history
@@ -106,15 +162,21 @@ function saveCommandToHistory(command) {
 // Update the "Previous Command" UI
 function updatePreviousCommand() {
     const history = JSON.parse(localStorage.getItem(commandHistoryKey)) || [];
-    const previousCommand = history[0] || "None";
+    const previousCommand = history.length > 0 ? history[0] : null; // Default to null
     const previousCommandElement = document.getElementById("current-command");
-    previousCommandElement.textContent = `Previous Command: ${previousCommand}`;
+
+    // Default message when no command history
+    if (!previousCommand) {
+        previousCommandElement.textContent = "Previous Command: None";
+    } else {
+        previousCommandElement.textContent = `Previous Command: ${previousCommand}`;
+    }
 
     // Enable or disable the Re-run button
     const rerunButton = document.getElementById("rerun-btn");
-    rerunButton.disabled = previousCommand === "None";
+    rerunButton.disabled = !previousCommand;
     rerunButton.onclick = () => {
-        if (previousCommand !== "None") {
+        if (previousCommand) {
             executeCommand(previousCommand);
         }
     };
@@ -141,13 +203,12 @@ const commandRunnerContent = document.getElementById("command-panel-content");
 const editorOverlay = document.getElementById("editor-overlay");
 
 toggleButton.addEventListener("click", () => {
+    // Toggle collapsed state for the command panel
     const isCollapsed = commandRunnerContent.classList.toggle("collapsed");
-    toggleButton.classList.toggle("collapse", isCollapsed);
 
     // Show or hide overlay based on panel visibility
     editorOverlay.classList.toggle("active", !isCollapsed);
 
-    // Update caret icon
-    const icon = toggleButton.querySelector("ion-icon");
-    icon.name = isCollapsed ? "chevron-up-outline" : "chevron-down-outline";
+    // Add or remove class for caret rotation
+    toggleButton.classList.toggle("expanded", !isCollapsed);
 });

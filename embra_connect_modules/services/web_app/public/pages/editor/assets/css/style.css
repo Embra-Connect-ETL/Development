@@ -452,6 +452,20 @@ Command Runner
     font-weight: 700;
 }
 
+/* Default caret style */
+.caret-icon {
+    transition: transform 0.3s ease;
+    /* Smooth transition */
+    transform: rotate(0deg);
+    /* Default: points down */
+}
+
+/* Rotate the caret to point up when expanded */
+#toggle-command-panel.expanded .caret-icon {
+    transform: rotate(180deg);
+    /* Points up */
+}
+
 .run-command-btn {
     width: 120px;
     padding: .8rem;
@@ -657,6 +671,11 @@ Command Runner
 
 .log pre {
     font-size: .8rem;
+}
+
+.dbt-logs {
+    font-size: .6rem;
+    color: lime;
 }
 
 .default-message {
