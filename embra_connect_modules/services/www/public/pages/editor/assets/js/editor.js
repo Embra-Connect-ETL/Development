@@ -302,6 +302,7 @@ require(["vs/editor/editor.main"], function () {
             html: "html",
             css: "css",
             json: "json",
+            log: "json",
             yml: "yaml",
             txt: "plaintext",
             sql: "sql",
