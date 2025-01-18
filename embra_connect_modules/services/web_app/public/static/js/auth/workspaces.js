@@ -338,5 +338,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
     // Storing the workspace_id is not necessary on this page.
     localStorage.removeItem("workspace_id");
+    localStorage.removeItem("PROJECT_KEY");
+    localStorage.removeItem("PROJECT_TYPE");
 });
 

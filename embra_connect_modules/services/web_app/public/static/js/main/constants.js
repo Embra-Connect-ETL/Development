@@ -82,12 +82,12 @@ const ENDPOINTS = Object.freeze({
 });
 
 // [DEBUG] logs.
-for (let key in ENDPOINTS) {
-    if (ENDPOINTS.hasOwnProperty(key)) {
-        console.warn(key, ENDPOINTS[key])
-        console.log("\n");
-    }
-}
+// for (let key in ENDPOINTS) {
+//     if (ENDPOINTS.hasOwnProperty(key)) {
+//         console.warn(key, ENDPOINTS[key])
+//         console.log("\n");
+//     }
+// }
 
 /**********************************
     The following section contains

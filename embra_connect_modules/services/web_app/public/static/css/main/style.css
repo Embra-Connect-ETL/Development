@@ -967,7 +967,7 @@ input:focus {
   gap: 2rem;
   background: var(--white);
   border: 1px solid var(--white-alt);
-  padding: 1.5rem;
+  padding: 2.6rem;
   border-radius: 6px 12px;
   height: 19px;
   cursor: pointer;
