@@ -1,5 +1,5 @@
 [package]
-name = "embra_connect_server"
+name = "web_app"
 version = "0.1.0"
 edition = "2021"
 
