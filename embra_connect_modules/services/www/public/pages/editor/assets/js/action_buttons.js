@@ -2,7 +2,7 @@
  * The following section contains [DEFAULT]
  * values that's specific to side ba  logic.
  **********************************************/
-const FILE_FOLDER_CREATION = "http://localhost:7000";
+const FILE_FOLDER_CREATION = "https://ec-connect-ide-1-0.onrender.com";
 
 // Modal Element References
 const modal = document.getElementById('custom-modal');

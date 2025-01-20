@@ -1,4 +1,4 @@
-const COMMAND_EXECUTION = "http://localhost:7000";
+const COMMAND_EXECUTION = "https://ec-connect-ide-1-0.onrender.com";
 
 const commandHistoryKey = "commandHistory"; // Local storage key for command history
 const maxHistory = 5; // Max commands to store in history

@@ -6,6 +6,7 @@ ENV ROCKET_ADDRESS=0.0.0.0
 ENV ROCKET_PORT=8000
 
 COPY ./target/x86_64-unknown-linux-musl/release/web_app /app/
+COPY ./public /app/public/
 
 CMD ["/app/web_app"]
 

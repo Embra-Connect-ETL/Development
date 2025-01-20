@@ -3,7 +3,9 @@
     contains the [BASE] url and necessary
     [ENDPOINT] definitions.
 *****************************************/
-const BASE_URL = "http://localhost";
+const BASE_URL = "https://embraconnect.onrender.com";
+const AUTH_URL = "https://ec-auth.onrender.com";
+const CONNECT_IDE_URL = "https://ec-connect-ide-1-0.onrender.com"
 
 const PORT = Object.freeze({
     AUTH_SERVICE: 9000,
@@ -45,17 +47,17 @@ const ENDPOINTS = Object.freeze({
     *******************************************/
 
     // User management.
-    REGISTRATION: `${BASE_URL}:${PORT.AUTH_SERVICE}${ROUTES.REGISTER}`,
-    LOGIN: `${BASE_URL}:${PORT.AUTH_SERVICE}${ROUTES.LOGIN}`,
-    AUTHORIZATION: `${BASE_URL}:${PORT.AUTH_SERVICE}${ROUTES.SESSION_VALIDATION}`,
+    REGISTRATION: `${AUTH_URL}${ROUTES.REGISTER}`,
+    LOGIN: `${AUTH_URL}${ROUTES.LOGIN}`,
+    AUTHORIZATION: `${AUTH_URL}${ROUTES.SESSION_VALIDATION}`,
 
     // File management.
-    DIRECTORY_MANAGEMENT: `${BASE_URL}:${PORT.EDITOR_SERVICE}${ROUTES.DIRECTORY_MANAGEMENT}`,
-    FILE_MANAGEMENT: `${BASE_URL}:${PORT.EDITOR_SERVICE}`,
+    DIRECTORY_MANAGEMENT: `${CONNECT_IDE_URL}${ROUTES.DIRECTORY_MANAGEMENT}`,
+    FILE_MANAGEMENT: `${CONNECT_IDE_URL}`,
 
     // Workspace & Project management.
-    WORKSPACE_MANAGEMENT: `${BASE_URL}:${PORT.WORKSPACE_SERVICE}${ROUTES.WORKSPACE_MANAGEMENT}`,
-    PROJECT_MANAGEMENT: `${BASE_URL}:${PORT.PROJECT_SERVICE}${ROUTES.PROJECT_MANAGEMENT}`,
+    WORKSPACE_MANAGEMENT: `${CONNECT_IDE_URL}${ROUTES.WORKSPACE_MANAGEMENT}`,
+    PROJECT_MANAGEMENT: `${CONNECT_IDE_URL}${ROUTES.PROJECT_MANAGEMENT}`,
 
 
     /*******************************************
@@ -64,21 +66,21 @@ const ENDPOINTS = Object.freeze({
      *******************************************/
 
     // User management.
-    REGISTRATION_PAGE: `${BASE_URL}:${PORT.BASE}${PAGES.REGISTER}`,
-    LOGIN_PAGE: `${BASE_URL}:${PORT.BASE}${PAGES.LOGIN}`,
+    REGISTRATION_PAGE: `${BASE_URL}${PAGES.REGISTER}`,
+    LOGIN_PAGE: `${BASE_URL}${PAGES.LOGIN}`,
 
     // Analytics.
-    DASHBOARD_PAGE: `${BASE_URL}:${PORT.BASE}${PAGES.DASHBOARD}`,
+    DASHBOARD_PAGE: `${BASE_URL}${PAGES.DASHBOARD}`,
 
     // File management.
-    EDITOR_PAGE: `${BASE_URL}:${PORT.BASE}${PAGES.EDITOR}`,
+    EDITOR_PAGE: `${BASE_URL}${PAGES.EDITOR}`,
 
     // Connection management.
-    CONFIG_PAGE: `${BASE_URL}:${PORT.BASE}${PAGES.CONFIG}`,
+    CONFIG_PAGE: `${BASE_URL}${PAGES.CONFIG}`,
 
     // Workspace & Project management.
-    WORKSPACES_PAGE: `${BASE_URL}:${PORT.BASE}${PAGES.WORKSPACES}`,
-    PROJECTS_PAGE: `${BASE_URL}:${PORT.BASE}${PAGES.PROJECTS}`
+    WORKSPACES_PAGE: `${BASE_URL}${PAGES.WORKSPACES}`,
+    PROJECTS_PAGE: `${BASE_URL}${PAGES.PROJECTS}`
 });
 
 // [DEBUG] logs.

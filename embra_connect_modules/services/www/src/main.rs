@@ -1,8 +1,11 @@
+#![allow(unused)]
 use rocket::fairing::{Fairing, Info, Kind};
 use rocket::fs::{relative, FileServer};
 use rocket::http::Header;
 use rocket::{launch, routes};
 use rocket::{Request, Response};
+use std::path::PathBuf;
+use std::env;
 
 pub struct CORS;
 
@@ -35,8 +38,13 @@ pub async fn options(_route_args: Option<std::path::PathBuf>) -> rocket::http::S
 
 #[launch]
 fn rocket() -> _ {
+    let current_dir = env::current_dir().expect("Failed to get current directory");
+    let public_path: PathBuf = current_dir.join("./public");
+
+    dbg!(&public_path);
+
     rocket::build()
         .attach(CORS)
-        .mount("/", FileServer::from(relative!("public")))
+        .mount("/", FileServer::from(public_path))
         .mount("/", routes![options])
 }
