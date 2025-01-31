@@ -48,6 +48,8 @@ describe("User Registration Tests", ()=>{
         expect(await page.locator('.toastify').textContent()).toBe('A user with this email already exists');
       });
 
+    })
+    
     //   test('Should reject user input if email provided is not a valid email address', async({ page })=>{
     //       await page.goto(registerUrl);
     //       await page.locator('#email').fill('Random');
@@ -55,8 +57,6 @@ describe("User Registration Tests", ()=>{
     //       await page.locator('#registeration-btn').click();
     //       expect( await page.locator('.toastify')).toBeVisible();
     //   })
-})
-
 
   
 
