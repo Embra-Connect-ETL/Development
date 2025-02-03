@@ -1,58 +1,47 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://www.krakend.io/schema/krakend.json",
-  "title": "Schema validation for KrakenD configuration",
-  "version": 3,
-  "name": "API Gateway",
-  "port": 8081,
-  "cache_ttl": "3600s",
-  "output_encoding": "json",
-  "extra_config": {
-      "plugin/http-server": {
-          "enabled": true,
-          "name": "custom_validation_plugin"
+    "version": 3,
+    "timeout": "3000ms",
+    "extra_config": {
+      "github_com/devopsfaith/krakend-cors": {
+        "allow_origins": ["*"],
+        "allow_methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        "allow_headers": ["Authorization", "Content-Type"],
+        "expose_headers": ["Content-Length"],
+        "max_age": "86400",
+        "allow_credentials": true
       }
-  },
-  "endpoints": [
+    },
+    "endpoints": [
       {
-          "endpoint": "/authentication",
-          "method": "POST",
-          "backend": [
-              {
-                  "url_pattern": "/auth/login",
-                  "host": ["http://localhost:5000"]
-              }
-          ]
+        "endpoint": "/register",
+        "method": "POST",
+        "backend": [
+          {
+            "url_pattern": "/register",
+            "host": ["https://ec-access-control.onrender.com"]
+          }
+        ]
       },
       {
-          "endpoint": "/workspaces",
-          "method": "GET",
-          "backend": [
-              {
-                  "url_pattern": "/workspaces",
-                  "host": ["http://localhost:5001"]
-              }
-          ]
+        "endpoint": "/login",
+        "method": "POST",
+        "backend": [
+          {
+            "url_pattern": "/login",
+            "host": ["https://ec-access-control.onrender.com"]
+          }
+        ]
       },
       {
-          "endpoint": "/projects",
-          "method": "GET",
-          "backend": [
-              {
-                  "url_pattern": "/projects",
-                  "host": ["http://localhost:5002"]
-              }
-          ]
-      },
-      {
-          "endpoint": "/ide",
-          "method": "GET",
-          "backend": [
-              {
-                  "url_pattern": "/ide",
-                  "host": ["http://localhost:5003"]
-              }
-          ]
+        "endpoint": "/update",
+        "method": "PUT",
+        "backend": [
+          {
+            "url_pattern": "/update",
+            "host": ["https://ec-access-control.onrender.com"]
+          }
+        ]
       }
-  ]
-}
+    ]
+  }
+  
