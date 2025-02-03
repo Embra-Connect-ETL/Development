@@ -1,184 +1,186 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "https://www.krakend.io/schema/krakend.json",
-    "title": "Schema validation for the latest version of KrakenD. Consider sticking to the specific version you are using.",
+    "title": "Schema validation for KrakenD configuration",
     "allOf": [
-        {
-            "$ref": "v2.8/krakend.json"
-        }
+      {
+        "$ref": "v2.8/krakend.json"
+      }
     ],
     "version": 3,
     "name": "API Gateway",
     "port": 8081,
     "cache_ttl": "3600s",
     "output_encoding": "json",
-    "endpoints": [
-        {
-            "endpoint": "/register", 
-            "method": "GET", 
-            "backend": [
-                {
-                    "url_pattern": "/index.html",
-                    "host": [
-                        "http://localhost:9000"
-                    ]
-                }
-            ]
-        },
-        {
-            "endpoint": "/login", 
-            "method": "GET", 
-            "backend": [
-                {
-                    "url_pattern": "/login/index.html",
-                    "host": [
-                        "http://localhost:9000"
-                    ]
-                }
-            ]
-        },
-        {
-            "endpoint": "/workspaces",
-            "method": "GET",
-            "backend": [
-                {
-                    "url_pattern": "/workspaces/index.html",
-                    "host": [
-                        "http://localhost:9000"
-                    ]
-                }
-            ]
-        },
-        {
-            "endpoint": "/projects",
-            "method": "GET",
-            "backend": [
-                {
-                    "url_pattern": "/projects/index.html",
-                    "host": [
-                        "http://localhost:9000"
-                    ]
-                }
-            ]
-        },
-        {
-            "endpoint": "/register",
-            "method": "POST",
-            "backend": [
-                {
-                    "url_pattern": "/register",
-                    "host": [
-                        "http://localhost:9000"
-                    ]
-                }
-            ]
-        },
-        {
-            "endpoint": "/login",
-            "method": "POST",
-            "backend": [
-                {
-                    "url_pattern": "/login",
-                    "host": [
-                        "http://localhost:9000"
-                    ]
-                }
-            ]
-        },
-        {
-            "endpoint": "/validate_token",
-            "method": "POST",
-            "backend": [
-                {
-                    "url_pattern": "/validate_token",
-                    "host": [
-                        "http://localhost:9000"
-                    ]
-                }
-            ]
-        },
-        {
-            "endpoint": "/workspace",
-            "method": "POST",
-            "backend": [
-                {
-                    "url_pattern": "/workspace",
-                    "host": [
-                        "http://localhost:7000"
-                    ]
-                }
-            ],
-            "extra_config": {
-                "auth/validator": {
-                    "alg": "HS256",
-                    "custom_validation": true,
-                    "required_token_field": "token",
-                    "endpoint": "/validate_token",
-                    "host": [
-                        "http://localhost:9000"
-                    ]
-                }
-            }
-        },
-        {
-            "endpoint": "/project",
-            "method": "POST",
-            "backend": [
-                {
-                    "url_pattern": "/project",
-                    "host": [
-                        "http://localhost:7000"
-                    ]
-                }
-            ],
-            "extra_config": {
-                "auth/validator": {
-                    "alg": "HS256",
-                    "custom_validation": true,
-                    "required_token_field": "token",
-                    "endpoint": "/validate_token",
-                    "host": [
-                        "http://localhost:9000"
-                    ]
-                }
-            }
-        },
-        {
-            "endpoint": "/directory",
-            "method": "POST",
-            "backend": [
-                {
-                    "url_pattern": "/directory",
-                    "host": [
-                        "http://localhost:7000"
-                    ]
-                }
-            ],
-            "extra_config": {
-                "auth/validator": {
-                    "alg": "HS256",
-                    "custom_validation": true,
-                    "required_token_field": "token",
-                    "endpoint": "/validate_token",
-                    "host": [
-                        "http://localhost:9000"
-                    ]
-                }
-            }
-        }
-    ],
     "extra_config": {
-        "rate_limit": {
-            "max_rate": 100,
-            "client_max_rate": 10
+      "plugin/http-server": {
+        "enabled": true,
+        "name": "custom_validation_plugin"
+      }
+    },
+    "endpoints": [
+      {
+        "endpoint": "/validate_token",
+        "method": "POST",
+        "extra_config": {
+          "validator": {
+            "validation_endpoint": "https://ec-auth.onrender.com/validate_token",
+            "body_to_validate": true
+          }
         },
-        "env": {
-            "development": {
-                "log_level": "DEBUG"
-            },
-            "production": {
-                "log_level": "INFO"
-            }
-        }
-    }
-}
+        "backend": [
+          {
+            "url_pattern": "/validate_token",
+            "host": [
+              "https://ec-connect-ide-1-0.onrender.com"
+            ]
+          }
+        ]
+      },
+      {
+        "endpoint": "/workspace",
+        "method": "POST",
+        "extra_config": {
+          "validator": {
+            "validation_endpoint": "https://ec-auth.onrender.com/validate_token",
+            "body_to_validate": true
+          }
+        },
+        "backend": [
+          {
+            "url_pattern": "/workspace",
+            "host": [
+              "https://ec-connect-ide-1-0.onrender.com"
+            ]
+          }
+        ]
+      },
+      {
+        "endpoint": "/project",
+        "method": "POST",
+        "extra_config": {
+          "validator": {
+            "validation_endpoint": "https://ec-auth.onrender.com/validate_token",
+            "body_to_validate": true
+          }
+        },
+        "backend": [
+          {
+            "url_pattern": "/project",
+            "host": [
+              "https://ec-connect-ide-1-0.onrender.com"
+            ]
+          }
+        ]
+      },
+      {
+        "endpoint": "/directory",
+        "method": "POST",
+        "extra_config": {
+          "validator": {
+            "validation_endpoint": "https://ec-auth.onrender.com/validate_token",
+            "body_to_validate": true
+          }
+        },
+        "backend": [
+          {
+            "url_pattern": "/directory",
+            "host": [
+              "https://ec-connect-ide-1-0.onrender.com"
+            ]
+          }
+        ]
+      },
+      {
+        "endpoint": "/create",
+        "method": "POST",
+        "extra_config": {
+          "validator": {
+            "validation_endpoint": "https://ec-auth.onrender.com/validate_token",
+            "body_to_validate": true
+          }
+        },
+        "backend": [
+          {
+            "url_pattern": "/create",
+            "host": [
+              "https://ec-connect-ide-1-0.onrender.com"
+            ]
+          }
+        ]
+      },
+      {
+        "endpoint": "/update",
+        "method": "POST",
+        "extra_config": {
+          "validator": {
+            "validation_endpoint": "https://ec-auth.onrender.com/validate_token",
+            "body_to_validate": true
+          }
+        },
+        "backend": [
+          {
+            "url_pattern": "/update",
+            "host": [
+              "https://ec-connect-ide-1-0.onrender.com"
+            ]
+          }
+        ]
+      },
+      {
+        "endpoint": "/rename",
+        "method": "POST",
+        "extra_config": {
+          "validator": {
+            "validation_endpoint": "https://ec-auth.onrender.com/validate_token",
+            "body_to_validate": true
+          }
+        },
+        "backend": [
+          {
+            "url_pattern": "/rename",
+            "host": [
+              "https://ec-connect-ide-1-0.onrender.com"
+            ]
+          }
+        ]
+      },
+      {
+        "endpoint": "/delete",
+        "method": "POST",
+        "extra_config": {
+          "validator": {
+            "validation_endpoint": "https://ec-auth.onrender.com/validate_token",
+            "body_to_validate": true
+          }
+        },
+        "backend": [
+          {
+            "url_pattern": "/delete",
+            "host": [
+              "https://ec-connect-ide-1-0.onrender.com"
+            ]
+          }
+        ]
+      },
+      {
+        "endpoint": "/execute",
+        "method": "POST",
+        "extra_config": {
+          "validator": {
+            "validation_endpoint": "https://ec-auth.onrender.com/validate_token",
+            "body_to_validate": true
+          }
+        },
+        "backend": [
+          {
+            "url_pattern": "/execute",
+            "host": [
+              "https://ec-connect-ide-1-0.onrender.com"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  
