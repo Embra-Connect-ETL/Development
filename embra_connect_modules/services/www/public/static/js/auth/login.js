@@ -87,6 +87,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
     SESSION_KEYS.forEach(key => localStorage.removeItem(key));
 });
-
-
-
