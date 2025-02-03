@@ -6,11 +6,8 @@ let registerUrl = 'https://embraconnect.onrender.com/pages/register/index.html';
 
 
 describe("User Registration Tests", ()=>{
-    let userEmail: string;
-
-    before(()=>{
-       userEmail = faker.internet.email();
-    })
+    let userEmail: string = faker.internet.email();
+    
 
     test('Should show a toast message when user clicks register button without providing email and password', async ({ page }) => {
       await page.goto(registerUrl);
@@ -41,11 +38,11 @@ describe("User Registration Tests", ()=>{
     //   await page.locator('#email').fill('Random');
     //   await page.locator('#password').fill('Test@12345');
     //   await page.locator('#registeration-btn').click();
-    //   // expect( await page.locator('.toastify')).toBeVisible();
-    //   expect(await page.locator('.toastify').textContent()).toBe('Email and password cannot be empty.');
+    //   expect(await page.locator('.toastify').textContent()).toBe('Invalid email address format.');
     // })
 
     test('should create a new user if user input passes validation checks', async({page})=>{
+      console.log(userEmail);
       await page.goto(registerUrl);
       await page.locator('#email').fill(userEmail);
       await page.locator('#password').fill('Test@12345');
@@ -56,6 +53,7 @@ describe("User Registration Tests", ()=>{
     });
 
     test('should show a toast warning the user of registration of an already registered email address', async({page})=>{
+      console.log(userEmail);
       await page.goto(registerUrl);
       await page.locator('#email').fill(userEmail);
       await page.locator('#password').fill('Test@12345');

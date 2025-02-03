@@ -23,7 +23,7 @@ document.getElementById("registeration-btn").addEventListener("click", async fun
         showToast("Email and password cannot be empty.", COLOR_CODE.FAILURE);
         return;
     }else if(!emailRegex.test(email)){
-        showToast("Invalid email address format", COLOR_CODE.FAILURE);
+        showToast("Invalid email address format.", COLOR_CODE.FAILURE);
         return;
     }
 
