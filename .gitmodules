@@ -7,3 +7,6 @@
 [submodule "embra_connect_modules/services/connect_ide"]
 	path = embra_connect_modules/services/connect_ide
 	url = https://github.com/Embra-Connect-ETL/Connect-IDE.git
+[submodule "embra_connect_modules/services/www"]
+	path = embra_connect_modules/services/www
+	url = https://github.com/Embra-Connect-ETL/www.git
