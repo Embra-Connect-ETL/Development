@@ -42,7 +42,6 @@ describe("User Registration Tests", ()=>{
     // })
 
     test('should create a new user if user input passes validation checks', async({page})=>{
-      console.log(userEmail);
       await page.goto(registerUrl);
       await page.locator('#email').fill(userEmail);
       await page.locator('#password').fill('Test@12345');
@@ -53,7 +52,6 @@ describe("User Registration Tests", ()=>{
     });
 
     test('should show a toast warning the user of registration of an already registered email address', async({page})=>{
-      console.log(userEmail);
       await page.goto(registerUrl);
       await page.locator('#email').fill(userEmail);
       await page.locator('#password').fill('Test@12345');
