@@ -13,3 +13,6 @@
 [submodule "embra_connect_modules/services/ec_gateway"]
 	path = embra_connect_modules/services/ec_gateway
 	url = https://github.com/Embra-Connect-ETL/ec_gateway.git
+[submodule "embra_connect_modules/services/ec_firewall"]
+	path = embra_connect_modules/services/ec_firewall
+	url = https://github.com/Embra-Connect-ETL/ec_firewall.git
