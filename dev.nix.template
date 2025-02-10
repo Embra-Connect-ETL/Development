@@ -6,9 +6,7 @@
 
   # Use https://search.nixos.org/packages to find packages
   packages = [
-    pkgs.cargo
-    pkgs.rustc
-    pkgs.rustfmt
+    pkgs.docker
     pkgs.stdenv.cc
     pkgs.python311
     pkgs.python311Packages.pip
@@ -18,7 +16,7 @@
 
   # Sets environment variables in the workspace
   env = {
-    RUST_SRC_PATH = "${pkgs.rustPlatform.rustLibSrc}";
+    # RUST_SRC_PATH = "${pkgs.rustPlatform.rustLibSrc}";
   };
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
