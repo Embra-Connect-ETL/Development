@@ -1,41 +1,79 @@
-version: "3.3"
+version: "3.8"
 
 services:
-  # Web-Client server
-  server:
-    image: lexaraprime/embra_connect_server:latest
-    build:
-      context: ./server
-    ports:
-      - 5500:5500
+  ec_firewall:
+    image: irfanghat/ec_firewall:latest
     restart: unless-stopped
-
-  # DBT service
-  dbt_service:
-    image: lexaraprime/embra_connect_dbt_service:latest
-    build:
-      context: ./services/dbt
     ports:
-      - 3000:3000
-    restart: unless-stopped
-
-  # Editor
-  editor:
-    image: lexaraprime/embra_connect_editor:latest
-    volumes:
-      - /config
-    ports:
-      - 8988:8888
-    restart: unless-stopped
-
-  # Vault service
-  vault-server:
-    image: hashicorp/vault:latest
+      - "8082:8082"
+    networks:
+      - ec_network
     environment:
-      - VAULT_DEV_ROOT_TOKEN_ID=ec-vault-token
-      - VAULT_DEV_LISTEN_ADDRESS=0.0.0.0:8200
-    ports:
-      - 8200:8200
-    cap_add:
-      - IPC_LOCK
+      INFISICAL_UNIVERSAL_CLIENT_ID: ${INFISICAL_UNIVERSAL_CLIENT_ID}
+      INFISICAL_UNIVERSAL_CLIENT_SECRET: ${INFISICAL_UNIVERSAL_CLIENT_SECRET}
+      INFISICAL_PROJECT_ID: ${INFISICAL_PROJECT_ID}
+      INFISICAL_SITE_URL: ${INFISICAL_SITE_URL}
+
+  ec_gateway:
+    image: irfanghat/ec_gateway:latest
     restart: unless-stopped
+    depends_on:
+      - ec_firewall
+    ports:
+      - "8080:8080"
+    networks:
+      - ec_network
+    environment:
+      INFISICAL_UNIVERSAL_CLIENT_ID: ${INFISICAL_UNIVERSAL_CLIENT_ID}
+      INFISICAL_UNIVERSAL_CLIENT_SECRET: ${INFISICAL_UNIVERSAL_CLIENT_SECRET}
+      INFISICAL_PROJECT_ID: ${INFISICAL_PROJECT_ID}
+      INFISICAL_SITE_URL: ${INFISICAL_SITE_URL}
+
+  ec_access_control:
+    image: irfanghat/ec_access_control:latest
+    restart: unless-stopped
+    depends_on:
+      - ec_gateway
+    ports:
+      - "8800:8800"
+    networks:
+      - ec_network
+    environment:
+      INFISICAL_UNIVERSAL_CLIENT_ID: ${INFISICAL_UNIVERSAL_CLIENT_ID}
+      INFISICAL_UNIVERSAL_CLIENT_SECRET: ${INFISICAL_UNIVERSAL_CLIENT_SECRET}
+      INFISICAL_PROJECT_ID: ${INFISICAL_PROJECT_ID}
+      INFISICAL_SITE_URL: ${INFISICAL_SITE_URL}
+
+  ec_connect_ide:
+    image: irfanghat/ec_connect_ide:latest
+    restart: unless-stopped
+    depends_on:
+      - ec_access_control
+    ports:
+      - "7000:7000"
+    networks:
+      - ec_network
+    environment:
+      INFISICAL_UNIVERSAL_CLIENT_ID: ${INFISICAL_UNIVERSAL_CLIENT_ID}
+      INFISICAL_UNIVERSAL_CLIENT_SECRET: ${INFISICAL_UNIVERSAL_CLIENT_SECRET}
+      INFISICAL_PROJECT_ID: ${INFISICAL_PROJECT_ID}
+      INFISICAL_SITE_URL: ${INFISICAL_SITE_URL}
+
+  ec_client:
+    image: irfanghat/ec_client:latest
+    restart: unless-stopped
+    depends_on:
+      - ec_connect_ide
+    ports:
+      - "8000:8000"
+    networks:
+      - ec_network
+    environment:
+      INFISICAL_UNIVERSAL_CLIENT_ID: ${INFISICAL_UNIVERSAL_CLIENT_ID}
+      INFISICAL_UNIVERSAL_CLIENT_SECRET: ${INFISICAL_UNIVERSAL_CLIENT_SECRET}
+      INFISICAL_PROJECT_ID: ${INFISICAL_PROJECT_ID}
+      INFISICAL_SITE_URL: ${INFISICAL_SITE_URL}
+
+networks:
+  ec_network:
+    driver: bridge
