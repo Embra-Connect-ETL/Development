@@ -1,0 +1,37 @@
+{
+    "scripts": {
+        "install:musl": "sudo apt-get update && sudo apt-get install -y musl-tools && rustup target add x86_64-unknown-linux-musl",
+        "install:openssl": "sudo apt-get update && sudo apt-get install -y pkg-config libssl-dev",
+        "install:deps": "npm run install:musl && npm run install:openssl",
+
+        "clean:rust": "cargo clean --manifest-path=services/connect_ide/Cargo.toml && cargo clean --manifest-path=services/ec_api_adapter/Cargo.toml && cargo clean --manifest-path=services/www/Cargo.toml && cargo clean --manifest-path=services/generic-auth-module/Cargo.toml",
+        "clean:docker": "sudo docker ps -a | awk '/ec_/ {print $1}' | xargs -r sudo docker rm -f && sudo docker images | awk '/ec_/ {print $3}' | xargs -r sudo docker rmi -f",
+
+        "list:all:containers": "docker ps -a | grep ec_",
+        "list:all:images": "docker images | grep ec_",
+        "clean:all": "npm run clean:rust && npm run clean:docker",
+
+        "build:connect_ide": "cargo build --release --target x86_64-unknown-linux-musl --manifest-path=services/connect_ide/Cargo.toml",
+        "build:ec_api_adapter": "cargo build --release --manifest-path=services/ec_api_adapter/Cargo.toml",
+        "build:www": "cargo build --release --target x86_64-unknown-linux-musl --manifest-path=services/www/Cargo.toml",
+        "build:generic-auth-module": "cargo build --release --target x86_64-unknown-linux-musl --manifest-path=services/generic-auth-module/Cargo.toml",
+
+        "build:docker:ec_connect_ide": "docker build -t irfanghat/ec_connect_ide:latest services/connect_ide",
+        "build:docker:ec_api_adapter": "docker build -t irfanghat/ec_api_adapter:latest services/ec_api_adapter",
+        "build:docker:ec_client": "docker build -t irfanghat/ec_client:latest services/www",
+        "build:docker:ec_access_control": "docker build -t irfanghat/ec_access_control:latest services/generic-auth-module",
+        "build:docker:ec_gateway": "docker build -t irfanghat/ec_gateway:latest services/ec_gateway",
+
+        "run:ec_connect_ide": "docker run --rm --env-file ./.env -p 7000:7000 irfanghat/ec_connect_ide:latest",
+        "run:ec_api_adapter": "docker run --rm irfanghat/ec_api_adapter:latest",
+        "run:ec_client": "docker run --rm -p 8000:8000 irfanghat/ec_client:latest",
+        "run:ec_access_control": "docker run --rm --env-file ./.env -p 8800:8800 irfanghat/ec_access_control:latest",
+        "run:ec_gateway": "docker run --rm -p 8080:8080 irfanghat/ec_gateway:latest",
+
+        "build:all": "npm run build:connect_ide && npm run build:ec_api_adapter && npm run build:www && npm run build:generic-auth-module",
+        "build:docker:all": "npm run build:docker:ec_connect_ide && npm run build:docker:ec_api_adapter && npm run build:docker:ec_client && npm run build:docker:ec_access_control && npm run build:docker:ec_gateway",
+
+        "run:all": "npm run run:ec_connect_ide & npm run run:ec_api_adapter & npm run run:ec_client & npm run run:ec_access_control",
+        "deploy": "npm run install:deps && npm run clean:all && npm run build:all && npm run build:docker:all && npm run run:all"
+    }
+}
