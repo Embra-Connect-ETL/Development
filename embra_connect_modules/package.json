@@ -22,6 +22,12 @@
         "build:docker:ec_access_control": "docker build -t irfanghat/ec_access_control:latest services/generic-auth-module",
         "build:docker:ec_gateway": "docker build -t irfanghat/ec_gateway:latest services/ec_gateway",
 
+        "push:docker:ec_connect_ide": "docker push irfanghat/ec_connect_ide:latest",
+        "push:docker:ec_api_adapter": "docker push irfanghat/ec_api_adapter:latest",
+        "push:docker:ec_client": "docker push irfanghat/ec_client:latest",
+        "push:docker:ec_access_control": "docker push irfanghat/ec_access_control:latest",
+        "push:docker:ec_gateway": "docker push irfanghat/ec_gateway:latest",
+
         "run:ec_connect_ide": "docker run --rm --env-file ./.env -p 7000:7000 irfanghat/ec_connect_ide:latest",
         "run:ec_api_adapter": "docker run --rm irfanghat/ec_api_adapter:latest",
         "run:ec_client": "docker run --rm -p 8000:8000 irfanghat/ec_client:latest",
