@@ -34,10 +34,10 @@
         "run:ec_access_control": "docker run --rm --env-file ./.env -p 8800:8800 irfanghat/ec_access_control:latest",
         "run:ec_gateway": "docker run --rm -p 8080:8080 irfanghat/ec_gateway:latest",
 
-        "build:all": "npm run build:connect_ide && npm run build:ec_api_adapter && npm run build:www && npm run build:generic-auth-module",
-        "build:docker:all": "npm run build:docker:ec_connect_ide && npm run build:docker:ec_api_adapter && npm run build:docker:ec_client && npm run build:docker:ec_access_control && npm run build:docker:ec_gateway",
+        "build:all:binaries": "npm run build:connect_ide && npm run build:ec_api_adapter && npm run build:www && npm run build:generic-auth-module",
+        "build:docker:all": "npm run build:docker:ec_connect_ide && npm run build:docker:ec_client && npm run build:docker:ec_access_control && npm run build:docker:ec_gateway",
 
         "run:all": "npm run run:ec_connect_ide & npm run run:ec_api_adapter & npm run run:ec_client & npm run run:ec_access_control",
-        "deploy": "npm run install:deps && npm run clean:all && npm run build:all && npm run build:docker:all && npm run run:all"
+        "deploy": "npm run install:deps && npm run clean:all && npm run build:all:binaries && npm run build:docker:all && npm run run:all"
     }
 }
