@@ -1,0 +1,48 @@
+@startuml
+actor User
+participant "Embra Connect ETL" as ETL
+participant "Apache Camel" as Camel
+participant "Source System" as Source
+participant "Destination System" as Destination
+participant "TinyML Model" as TinyML
+participant "Automation Engine" as Automation
+participant "Real-time Metrics Dashboard" as Metrics
+
+User -> ETL : Start ETL Process
+activate ETL
+
+ETL -> Camel : Connect to Various Sources
+activate Camel
+Camel -> Source : Extract Data from OPC UA/IoT Devices
+activate Source
+Source --> Camel : Data Extracted
+deactivate Source
+Camel --> ETL : Data Transferred
+deactivate Camel
+
+ETL -> ETL : Transform Data
+
+ETL -> Destination : Load Data
+activate Destination
+Destination --> ETL : Acknowledgment
+deactivate Destination
+
+ETL -> TinyML : Train & Deploy TinyML Models
+activate TinyML
+TinyML --> ETL : Model Deployed
+deactivate TinyML
+
+ETL -> Automation : Automate Processes
+activate Automation
+Automation --> ETL : Automation Executed
+deactivate Automation
+
+ETL -> Metrics : Display Real-time Metrics
+activate Metrics
+Metrics --> User : Metrics Visualized
+deactivate Metrics
+
+ETL --> User : ETL Process Completed
+
+deactivate ETL
+@enduml
