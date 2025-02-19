@@ -9,7 +9,7 @@ Think of Embra Connect like a universal power strip for IoT and edge device data
 
 ----------
 
-![Architecture](./embra_connect_architecture.png)
+![Architecture](./embra_connect_etl_architecture.png)
 
 ### Key Features:
 
