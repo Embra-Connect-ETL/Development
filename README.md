@@ -9,6 +9,8 @@ Think of Embra Connect like a universal power strip for IoT and edge device data
 
 ----------
 
+![Architecture](./embra_connect_architecture.png)
+
 ### Key Features:
 
 -   **Streamlined ETL Processes**: Simplify your data workflows with a user-friendly interface and powerful capabilities.
