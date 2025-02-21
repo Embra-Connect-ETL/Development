@@ -19,3 +19,6 @@
 [submodule "embra_connect_modules/services/ec_api_adapter"]
 	path = embra_connect_modules/services/ec_api_adapter
 	url = https://github.com/Embra-Connect-ETL/ec_api_adapter.git
+[submodule "embra_connect_modules/services/ec_mailing_service"]
+	path = embra_connect_modules/services/ec_mailing_service
+	url = https://github.com/Embra-Connect-ETL/ec_mailing_service.git
