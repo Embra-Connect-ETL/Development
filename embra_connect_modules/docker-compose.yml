@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.3"
 
 services:
   ec_firewall:
@@ -17,8 +17,6 @@ services:
   ec_gateway:
     image: irfanghat/ec_gateway:latest
     restart: unless-stopped
-    depends_on:
-      - ec_firewall
     ports:
       - "8080:8080"
     networks:
