@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
   ec_firewall:
-    image: irfanghat/ec_firewall:latest
+    image: embraconnect/ec_firewall:latest
     restart: unless-stopped
     ports:
       - "8082:8082"
@@ -15,10 +15,10 @@ services:
       INFISICAL_SITE_URL: ${INFISICAL_SITE_URL}
 
   ec_gateway:
-    image: irfanghat/ec_gateway:latest
+    image: embraconnect/ec_gateway:latest
     restart: unless-stopped
     ports:
-      - "8080:8080"
+      - "8081:8081"
     networks:
       - ec_network
     environment:
@@ -28,7 +28,7 @@ services:
       INFISICAL_SITE_URL: ${INFISICAL_SITE_URL}
 
   ec_access_control:
-    image: irfanghat/ec_access_control:latest
+    image: embraconnect/ec_access_control:latest
     restart: unless-stopped
     depends_on:
       - ec_gateway
@@ -43,7 +43,7 @@ services:
       INFISICAL_SITE_URL: ${INFISICAL_SITE_URL}
 
   ec_connect_ide:
-    image: irfanghat/ec_connect_ide:latest
+    image: embraconnect/ec_connect_ide:latest
     restart: unless-stopped
     depends_on:
       - ec_access_control
@@ -58,7 +58,7 @@ services:
       INFISICAL_SITE_URL: ${INFISICAL_SITE_URL}
 
   ec_client:
-    image: irfanghat/ec_client:latest
+    image: embraconnect/ec_client:latest
     restart: unless-stopped
     depends_on:
       - ec_connect_ide
