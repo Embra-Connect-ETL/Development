@@ -12,7 +12,7 @@ services:
       INFISICAL_UNIVERSAL_CLIENT_ID: ${INFISICAL_UNIVERSAL_CLIENT_ID}
       INFISICAL_UNIVERSAL_CLIENT_SECRET: ${INFISICAL_UNIVERSAL_CLIENT_SECRET}
       INFISICAL_PROJECT_ID: ${INFISICAL_PROJECT_ID}
-      INFISICAL_SITE_URL: ${INFISICAL_SITE_URL}
+      INFISICAL_SITE_URL: http://host.docker.internal:8080
 
   ec_gateway:
     image: embraconnect/ec_gateway:latest
@@ -25,7 +25,7 @@ services:
       INFISICAL_UNIVERSAL_CLIENT_ID: ${INFISICAL_UNIVERSAL_CLIENT_ID}
       INFISICAL_UNIVERSAL_CLIENT_SECRET: ${INFISICAL_UNIVERSAL_CLIENT_SECRET}
       INFISICAL_PROJECT_ID: ${INFISICAL_PROJECT_ID}
-      INFISICAL_SITE_URL: ${INFISICAL_SITE_URL}
+      INFISICAL_SITE_URL: http://host.docker.internal:8080
 
   ec_access_control:
     image: embraconnect/ec_access_control:latest
@@ -40,7 +40,7 @@ services:
       INFISICAL_UNIVERSAL_CLIENT_ID: ${INFISICAL_UNIVERSAL_CLIENT_ID}
       INFISICAL_UNIVERSAL_CLIENT_SECRET: ${INFISICAL_UNIVERSAL_CLIENT_SECRET}
       INFISICAL_PROJECT_ID: ${INFISICAL_PROJECT_ID}
-      INFISICAL_SITE_URL: ${INFISICAL_SITE_URL}
+      INFISICAL_SITE_URL: http://host.docker.internal:8080
 
   ec_connect_ide:
     image: embraconnect/ec_connect_ide:latest
@@ -55,7 +55,7 @@ services:
       INFISICAL_UNIVERSAL_CLIENT_ID: ${INFISICAL_UNIVERSAL_CLIENT_ID}
       INFISICAL_UNIVERSAL_CLIENT_SECRET: ${INFISICAL_UNIVERSAL_CLIENT_SECRET}
       INFISICAL_PROJECT_ID: ${INFISICAL_PROJECT_ID}
-      INFISICAL_SITE_URL: ${INFISICAL_SITE_URL}
+      INFISICAL_SITE_URL: http://host.docker.internal:8080
 
   ec_client:
     image: embraconnect/ec_client:latest
@@ -70,8 +70,95 @@ services:
       INFISICAL_UNIVERSAL_CLIENT_ID: ${INFISICAL_UNIVERSAL_CLIENT_ID}
       INFISICAL_UNIVERSAL_CLIENT_SECRET: ${INFISICAL_UNIVERSAL_CLIENT_SECRET}
       INFISICAL_PROJECT_ID: ${INFISICAL_PROJECT_ID}
-      INFISICAL_SITE_URL: ${INFISICAL_SITE_URL}
+      INFISICAL_SITE_URL: http://host.docker.internal:8080
+
+  mongo-db:
+    image: mongo:latest
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    networks:
+      - ec_network
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ec_root
+      MONGO_INITDB_ROOT_PASSWORD: ec_root
+      MONGO_INITDB_DATABASE: embra_connect_dev
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+
+  garage:
+    image: dxflrs/garage:v0.9.3
+    # network_mode: "host"
+    restart: unless-stopped
+    environment:
+      - GARAGE_ADMIN_TOKEN=ec_admin
+    ports:
+      - "3900:3900"
+      - "3901:3901"
+      - "3902:3902"
+      - "3903:3903"
+    volumes:
+      - ./garage.toml:/etc/garage.toml
+      - ./meta:/var/lib/garage/meta
+      - ./data:/var/lib/garage/data
+
+  infisical-backend:
+    container_name: infisical-backend
+    restart: unless-stopped
+    depends_on:
+      - infisical-dev-redis
+      - infisical-db
+
+    image: infisical/infisical:latest-postgres
+    # env_file: .env
+    ports:
+      - "80:8080"
+    environment:
+      - NODE_ENV=production
+      - AUTH_SECRET=71c79ec2a4c6059df9838e8d98ed608a105a7a810e3bbced201f25a2ea9108d0
+      - ENCRYPTION_KEY= ed0da43defc228d24873ba6cccfbec4d
+      - REDIS_URL=redis://infisical-dev-redis:6379
+      - DB_CONNECTION_URI=postgresql://infisical:<PASSWORD>@infisical-db:5432/infisical
+    networks:
+      - ec_network
+
+  infisical-dev-redis:
+    image: redis
+    container_name: infisical-dev-redis
+    env_file: .env
+    restart: always
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - "6379:6379"
+    networks:
+      - ec_network
+    volumes:
+      - redis_data:/data
+
+  infisical-db:
+    container_name: infisical-db
+    image: postgres:14-alpine
+    restart: always
+    env_file: .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - ec_network
+    healthcheck:
+      test: "pg_isready --username=${POSTGRES_USER} && psql --username=${POSTGRES_USER} --list"
+      interval: 5s
+      timeout: 10s
+      retries: 10
 
 networks:
   ec_network:
     driver: bridge
+
+volumes:
+  pg_data:
+    driver: local
+  redis_data:
+    driver: local
