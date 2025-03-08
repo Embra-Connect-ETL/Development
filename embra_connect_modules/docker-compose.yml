@@ -12,11 +12,13 @@ services:
       INFISICAL_UNIVERSAL_CLIENT_ID: ${INFISICAL_UNIVERSAL_CLIENT_ID}
       INFISICAL_UNIVERSAL_CLIENT_SECRET: ${INFISICAL_UNIVERSAL_CLIENT_SECRET}
       INFISICAL_PROJECT_ID: ${INFISICAL_PROJECT_ID}
-      INFISICAL_SITE_URL: http://host.docker.internal:8080
+      INFISICAL_SITE_URL: http://infisical-backend:8080
 
   ec_gateway:
     image: embraconnect/ec_gateway:latest
     restart: unless-stopped
+    depends_on:
+      - infisical-backend
     ports:
       - "8081:8081"
     networks:
@@ -25,13 +27,14 @@ services:
       INFISICAL_UNIVERSAL_CLIENT_ID: ${INFISICAL_UNIVERSAL_CLIENT_ID}
       INFISICAL_UNIVERSAL_CLIENT_SECRET: ${INFISICAL_UNIVERSAL_CLIENT_SECRET}
       INFISICAL_PROJECT_ID: ${INFISICAL_PROJECT_ID}
-      INFISICAL_SITE_URL: http://host.docker.internal:8080
+      INFISICAL_SITE_URL: http://infisical-backend:8080
 
   ec_access_control:
     image: embraconnect/ec_access_control:latest
     restart: unless-stopped
     depends_on:
       - ec_gateway
+      - infisical-backend
     ports:
       - "8800:8800"
     networks:
@@ -40,13 +43,14 @@ services:
       INFISICAL_UNIVERSAL_CLIENT_ID: ${INFISICAL_UNIVERSAL_CLIENT_ID}
       INFISICAL_UNIVERSAL_CLIENT_SECRET: ${INFISICAL_UNIVERSAL_CLIENT_SECRET}
       INFISICAL_PROJECT_ID: ${INFISICAL_PROJECT_ID}
-      INFISICAL_SITE_URL: http://host.docker.internal:8080
+      INFISICAL_SITE_URL: http://infisical-backend:8080
 
   ec_connect_ide:
     image: embraconnect/ec_connect_ide:latest
     restart: unless-stopped
     depends_on:
       - ec_access_control
+      - infisical-backend
     ports:
       - "7000:7000"
     networks:
@@ -55,13 +59,14 @@ services:
       INFISICAL_UNIVERSAL_CLIENT_ID: ${INFISICAL_UNIVERSAL_CLIENT_ID}
       INFISICAL_UNIVERSAL_CLIENT_SECRET: ${INFISICAL_UNIVERSAL_CLIENT_SECRET}
       INFISICAL_PROJECT_ID: ${INFISICAL_PROJECT_ID}
-      INFISICAL_SITE_URL: http://host.docker.internal:8080
+      INFISICAL_SITE_URL: http://infisical-backend:8080
 
   ec_client:
     image: embraconnect/ec_client:latest
     restart: unless-stopped
     depends_on:
       - ec_connect_ide
+      - infisical-backend
     ports:
       - "8000:8000"
     networks:
@@ -70,11 +75,13 @@ services:
       INFISICAL_UNIVERSAL_CLIENT_ID: ${INFISICAL_UNIVERSAL_CLIENT_ID}
       INFISICAL_UNIVERSAL_CLIENT_SECRET: ${INFISICAL_UNIVERSAL_CLIENT_SECRET}
       INFISICAL_PROJECT_ID: ${INFISICAL_PROJECT_ID}
-      INFISICAL_SITE_URL: http://host.docker.internal:8080
+      INFISICAL_SITE_URL: http://infisical-backend:8080
 
   mongo-db:
     image: mongo:latest
     restart: unless-stopped
+    depends_on:
+      - infisical-backend
     ports:
       - "27017:27017"
     networks:
@@ -112,13 +119,14 @@ services:
     image: infisical/infisical:latest-postgres
     # env_file: .env
     ports:
-      - "80:8080"
+      - "8080:8080"
     environment:
       - NODE_ENV=production
       - AUTH_SECRET=71c79ec2a4c6059df9838e8d98ed608a105a7a810e3bbced201f25a2ea9108d0
       - ENCRYPTION_KEY= ed0da43defc228d24873ba6cccfbec4d
       - REDIS_URL=redis://infisical-dev-redis:6379
-      - DB_CONNECTION_URI=postgresql://infisical:<PASSWORD>@infisical-db:5432/infisical
+      - DB_CONNECTION_URI=postgresql://infisical:infisical_user@infisical-db:5432/infisical
+      - CORS_ALLOWED_ORIGINS=["*"]
     networks:
       - ec_network
 
